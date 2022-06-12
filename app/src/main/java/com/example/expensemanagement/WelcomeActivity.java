@@ -23,6 +23,16 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
         loginBtn = findViewById(R.id.login_btn);
 
+
+
+
+
+
+
+
+
+        
+
         userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
         if (!userViewModel.userExist) {
             loginBtn.setText("Create an account");
