@@ -10,8 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExpenseManagement">
         <activity
-            android:name=".TestActivity"
-            android:exported="true">
+            android:name=".WelcomeActivity"
+            android:exported="true"
+            android:label="Expense Management">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
