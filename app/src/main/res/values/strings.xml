@@ -2,4 +2,6 @@
     <string name="app_name">Expense Management</string>
     <string name="add_material">Add material</string>
     <string name="my_image_description">Image</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>
