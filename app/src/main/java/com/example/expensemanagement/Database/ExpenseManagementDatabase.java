@@ -19,13 +19,13 @@ import com.example.expensemanagement.Domain.OutlayOwner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Material.class}, version = 2, exportSchema = false)
+@Database(entities = {Material.class,OutlayOwner.class}, version = 3, exportSchema = false)
 public abstract class ExpenseManagementDatabase extends RoomDatabase {
     public abstract MaterialDao materialDao();
 
     public abstract OutlayOwnerDao outlayOwnerDao();
 
-    private static final String dbName = "ExpenseManagementDatabase.db";
+    private static final String dbName = "ExpenseManagementDatabase3.db";
     private static volatile ExpenseManagementDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
     public static final ExecutorService databaseWriteExecutor =

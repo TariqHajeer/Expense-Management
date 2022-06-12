@@ -29,4 +29,8 @@ public class MaterialViewModel extends AndroidViewModel {
     public void inset(Material material) {
         materialRepository.insert(material);
     }
+
+    public int count(@NonNull String name) {
+        return materialRepository.count(name);
+    }
 }

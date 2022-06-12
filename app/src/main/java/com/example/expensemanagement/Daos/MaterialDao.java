@@ -1,5 +1,6 @@
 package com.example.expensemanagement.Daos;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -25,4 +26,10 @@ public interface MaterialDao {
 
     @Query("Select * from Material")
     LiveData<List<Material>> getAll();
+
+    @Query("Select Count(*) from Material where name=:name")
+    public int exist(@NonNull String name);
+
+    @Query("Select Count(*) from Material where name=:name and id!=:id")
+    public int exist(@NonNull String name,@NonNull int id);
 }
