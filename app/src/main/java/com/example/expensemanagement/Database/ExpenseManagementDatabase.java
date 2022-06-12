@@ -28,7 +28,6 @@ public abstract class ExpenseManagementDatabase extends RoomDatabase {
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     public static ExpenseManagementDatabase getDatabase(final Context context) {
-        Log.i("Database","getDatabase");
         if (INSTANCE == null) {
 
             synchronized (ExpenseManagementDatabase.class) {
@@ -48,7 +47,6 @@ public abstract class ExpenseManagementDatabase extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-            Log.d("OnCreate","Seeder");
             materialSeed();
         }
     };
@@ -59,29 +57,10 @@ public abstract class ExpenseManagementDatabase extends RoomDatabase {
             // If you want to start with more words, just add them.
             MaterialDao dao = INSTANCE.materialDao();
             Material electricityBill = new Material("Electricity bill", null, true);
-            Log.i("Custom", electricityBill.getName());
             dao.insert(electricityBill);
             Material waterBill = new Material("Water bill", null, true);
-            Log.i("Custom", waterBill.getName());
             dao.insert(waterBill);
         });
     }
 
-//    private static class SeedMaterialAsyncTask extends AsyncTask<Void, Void, Void> {
-//
-//        private MaterialDao materialDao;
-//
-//        public SeedMaterialAsyncTask(MaterialDao materialDao) {
-//            this.materialDao = materialDao;
-//        }
-//
-//        @Override
-//        protected Void doInBackground(Void... voids) {
-//            Material electricityBill = new Material("Electricity bill", null, true);
-//            materialDao.insert(electricityBill);
-//            Material waterBill = new Material("Water bill", null, true);
-//            materialDao.insert(waterBill);
-//            return null;
-//        }
-//    }
 }

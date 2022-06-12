@@ -13,7 +13,7 @@ import com.example.expensemanagement.ViewModels.MaterialViewModel;
 
 public class MainActivity extends AppCompatActivity {
     private MaterialViewModel materialViewModel;
-
+    public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
