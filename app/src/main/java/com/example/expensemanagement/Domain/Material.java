@@ -24,6 +24,10 @@ public class Material {
         this.setIsService(isService);
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return this.id;
     }
