@@ -14,7 +14,7 @@ public class MaterialRepository {
     private MaterialDao materialDao;
     private LiveData<List<Material>> materials;
 
-    MaterialRepository(Application application) {
+    public MaterialRepository(Application application) {
         ExpenseManagementDatabase db = ExpenseManagementDatabase.getDatabase(application);
         materialDao = db.materialDao();
         materials = materialDao.getAll();
@@ -24,7 +24,7 @@ public class MaterialRepository {
         return materials;
     }
 
-    void insert(Material material) {
+    public void insert(Material material) {
         ExpenseManagementDatabase.databaseWriteExecutor.execute(() -> {
             materialDao.insert(material);
         });
