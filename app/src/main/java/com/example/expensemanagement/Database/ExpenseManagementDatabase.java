@@ -14,6 +14,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.example.expensemanagement.Daos.MaterialDao;
 import com.example.expensemanagement.Daos.OutlayOwnerDao;
 import com.example.expensemanagement.Domain.Material;
+import com.example.expensemanagement.Domain.OutlayOwner;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -21,7 +22,9 @@ import java.util.concurrent.Executors;
 @Database(entities = {Material.class}, version = 2, exportSchema = false)
 public abstract class ExpenseManagementDatabase extends RoomDatabase {
     public abstract MaterialDao materialDao();
-    public  abstract OutlayOwnerDao outlayOwnerDao();
+
+    public abstract OutlayOwnerDao outlayOwnerDao();
+
     private static final String dbName = "ExpenseManagementDatabase.db";
     private static volatile ExpenseManagementDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
@@ -49,8 +52,21 @@ public abstract class ExpenseManagementDatabase extends RoomDatabase {
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
             materialSeed();
+            outlayOwnerSeed();
         }
     };
+
+    private static void outlayOwnerSeed() {
+        databaseWriteExecutor.execute(() -> {
+
+            OutlayOwnerDao dao = INSTANCE.outlayOwnerDao();
+            OutlayOwner me = new OutlayOwner("Me", null);
+            dao.insert(me);
+
+            OutlayOwner myWife = new OutlayOwner("My wife", "don't give him a lot of money");
+            dao.insert(myWife);
+        });
+    }
 
     private static void materialSeed() {
         databaseWriteExecutor.execute(() -> {

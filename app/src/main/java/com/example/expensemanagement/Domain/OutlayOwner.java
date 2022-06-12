@@ -8,10 +8,16 @@ import androidx.room.PrimaryKey;
 @Entity(indices = {@Index(value = {"name"}, unique = true)})
 public class OutlayOwner {
     @PrimaryKey(autoGenerate = true)
-    private  int id;
+    private int id;
     @NonNull
-    private  String name;
+    private String name;
     private String description;
+
+    public OutlayOwner(@NonNull String name, String description) {
+        this.setName(name);
+        this.setDescription(description);
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -19,6 +25,7 @@ public class OutlayOwner {
     public int getId() {
         return this.id;
     }
+
     public void setName(@NonNull String name) {
         this.name = name.trim();
     }
@@ -26,6 +33,7 @@ public class OutlayOwner {
     public String getName() {
         return this.name;
     }
+
     public void setDescription(String description) {
         if (description != null)
             this.description = description.trim();
