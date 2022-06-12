@@ -35,8 +35,25 @@ public class MaterialRepository {
         });
     }
 
+    public void delete(Material material) {
+        ExpenseManagementDatabase.databaseWriteExecutor.execute(() -> {
+            materialDao.delete(material);
+        });
+    }
+
+    public void update(Material material) {
+        ExpenseManagementDatabase.databaseWriteExecutor.execute(() -> {
+            materialDao.update(material);
+        });
+    }
+
     public int count(@NonNull String name) throws ExecutionException, InterruptedException {
-        final Future<Integer> future = ExpenseManagementDatabase.databaseWriteExecutor.submit(new MyInfoCallable(name, materialDao));
+        final Future<Integer> future = ExpenseManagementDatabase.databaseWriteExecutor.submit(new Callable<Integer>() {
+            @Override
+            public Integer call() throws Exception {
+                return materialDao.exist(name);
+            }
+        });
         try {
             return future.get();
         } catch (InterruptedException | ExecutionException ex) {
@@ -48,18 +65,4 @@ public class MaterialRepository {
         return materialDao.exist(name, id);
     }
 
-    private static class MyInfoCallable implements Callable<Integer> {
-        String name;
-        MaterialDao materialDao;
-
-        public MyInfoCallable(String name, MaterialDao materialDao) {
-            this.name = name;
-            this.materialDao = materialDao;
-        }
-
-        @Override
-        public Integer call() throws Exception {
-            return this.materialDao.exist(name);
-        }
-    }
 }
