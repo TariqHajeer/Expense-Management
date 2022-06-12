@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Application;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -12,6 +13,8 @@ import android.widget.Toast;
 import com.example.expensemanagement.Adapters.MaterialListAdapter;
 import com.example.expensemanagement.Database.ExpenseManagementDatabase;
 import com.example.expensemanagement.ViewModels.MaterialViewModel;
+
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
     private MaterialViewModel materialViewModel;
@@ -33,8 +36,15 @@ public class MainActivity extends AppCompatActivity {
         materialViewModel = new ViewModelProvider(this).get(MaterialViewModel.class);
         materialViewModel.getMaterials().observe(this, materials -> {
             adapter.submitList(materials);
+
         });
-        int x = materialViewModel.count("Water bill");
-        Toast.makeText(this, Integer.toString(x), Toast.LENGTH_SHORT).show();
+        try {
+            int x = materialViewModel.count("Water bill");
+            Toast.makeText(this, Integer.toString(x), Toast.LENGTH_SHORT).show();
+        }
+        catch (InterruptedException | ExecutionException ex){
+            Toast.makeText(this, "There's error happen please re try", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }

@@ -11,6 +11,7 @@ import com.example.expensemanagement.Domain.Material;
 import com.example.expensemanagement.Repository.MaterialRepository;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class MaterialViewModel extends AndroidViewModel {
     private MaterialRepository materialRepository;
@@ -30,7 +31,12 @@ public class MaterialViewModel extends AndroidViewModel {
         materialRepository.insert(material);
     }
 
-    public int count(@NonNull String name) {
-        return materialRepository.count(name);
+    public int count(@NonNull String name) throws ExecutionException, InterruptedException {
+        try {
+            return materialRepository.count(name);
+        }
+        catch (InterruptedException | ExecutionException ex){
+            throw ex;
+        }
     }
 }

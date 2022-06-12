@@ -35,12 +35,12 @@ public class MaterialRepository {
         });
     }
 
-    public int count(@NonNull String name) {
+    public int count(@NonNull String name) throws ExecutionException, InterruptedException {
         final Future<Integer> future = ExpenseManagementDatabase.databaseWriteExecutor.submit(new MyInfoCallable(name, materialDao));
         try {
             return future.get();
         } catch (InterruptedException | ExecutionException ex) {
-            return -1;
+            throw ex;
         }
     }
 
