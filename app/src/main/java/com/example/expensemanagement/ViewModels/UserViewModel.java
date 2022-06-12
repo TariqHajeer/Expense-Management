@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
+import com.example.expensemanagement.Domain.User;
 import com.example.expensemanagement.Repository.UserRepository;
 
 import java.util.concurrent.ExecutionException;
@@ -21,6 +22,9 @@ public class UserViewModel extends AndroidViewModel {
         } catch (InterruptedException | ExecutionException ex) {
             throw ex;
         }
+    }
+    public  void insert(User user){
+        userRepository.insert(user);
     }
 
 }

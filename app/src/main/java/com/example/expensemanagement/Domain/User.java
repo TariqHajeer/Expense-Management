@@ -15,6 +15,11 @@ public class User {
     private String password;
     @NonNull
     private String hint;
+    public User(@NonNull String userName, @NonNull String password, @NonNull String hint) {
+        this.setUserName(userName);
+        this.setPassword(password);
+        this.setHint(hint);
+    }
 
     public void setId(@NonNull int id) {
         this.id = id;

@@ -47,4 +47,10 @@ public class UserRepository {
     public LiveData<User> getUser(@NonNull String userName, @NonNull String password) {
         return userDao.getUser(userName, password);
     }
+
+    public void insert(User user) {
+        ExpenseManagementDatabase.databaseWriteExecutor.execute(() -> {
+            userDao.insert(user);
+        });
+    }
 }
