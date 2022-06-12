@@ -18,18 +18,15 @@ public class MaterialViewModel extends AndroidViewModel {
 
     public MaterialViewModel(@NonNull Application application) {
         super(application);
-        Log.i("ViewModel","asdasdasd");
         materialRepository = new MaterialRepository(application);
         materials = materialRepository.getAll();
     }
 
     public LiveData<List<Material>> getMaterials() {
-        Log.i("ViewModel","asdasdasd");
         return materials;
     }
 
     public void inset(Material material) {
-        Log.i("ViewModel","asdasdasd");
         materialRepository.insert(material);
     }
 }
