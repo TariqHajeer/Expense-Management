@@ -31,11 +31,18 @@ public class MaterialViewModel extends AndroidViewModel {
         materialRepository.insert(material);
     }
 
+    public void delete(Material material) {
+        materialRepository.delete(material);
+    }
+
+    public void update(Material material) {
+        materialRepository.update(material);
+    }
+
     public int count(@NonNull String name) throws ExecutionException, InterruptedException {
         try {
             return materialRepository.count(name);
-        }
-        catch (InterruptedException | ExecutionException ex){
+        } catch (InterruptedException | ExecutionException ex) {
             throw ex;
         }
     }
