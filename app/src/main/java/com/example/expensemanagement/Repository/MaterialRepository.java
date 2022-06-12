@@ -1,6 +1,7 @@
 package com.example.expensemanagement.Repository;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -20,9 +21,7 @@ public class MaterialRepository {
         materials = materialDao.getAll();
     }
 
-    public LiveData<List<Material>> getAll() {
-        return materials;
-    }
+    public LiveData<List<Material>> getAll() { return materials; }
 
     public void insert(Material material) {
         ExpenseManagementDatabase.databaseWriteExecutor.execute(() -> {

@@ -32,7 +32,7 @@ public class Material {
         return this.id;
     }
 
-    public void setName(String name) {
+    public void setName(@NonNull String name) {
         this.name = name.trim();
     }
 
@@ -41,7 +41,8 @@ public class Material {
     }
 
     public void setDescription(String description) {
-        this.description = description.trim();
+        if (description != null)
+            this.description = description.trim();
     }
 
     public String getDescription() {
