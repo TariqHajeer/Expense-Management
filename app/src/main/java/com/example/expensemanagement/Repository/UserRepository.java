@@ -10,6 +10,7 @@ import com.example.expensemanagement.Daos.UserDao;
 import com.example.expensemanagement.Database.ExpenseManagementDatabase;
 import com.example.expensemanagement.Domain.User;
 
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -23,7 +24,6 @@ public class UserRepository {
         userDao = db.userDao();
 
     }
-
     public boolean userExist() throws ExecutionException, InterruptedException {
         if (userExist)
             return true;
@@ -44,8 +44,20 @@ public class UserRepository {
         }
     }
 
-    public LiveData<User> getUser(@NonNull String userName, @NonNull String password) {
-        return userDao.getUser(userName, password);
+    public List<User> getUser() throws ExecutionException, InterruptedException {
+        final Future<List<User>> future = ExpenseManagementDatabase.databaseWriteExecutor.submit(new Callable<List<User>>(){
+
+            @Override
+            public List<User> call() throws Exception {
+                return userDao.getUser();
+            }
+        });
+        try {
+            return future.get();
+        }
+        catch (InterruptedException | ExecutionException ex) {
+            throw ex;
+        }
     }
 
     public void insert(User user) {

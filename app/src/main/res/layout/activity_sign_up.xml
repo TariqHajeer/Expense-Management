@@ -87,7 +87,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextRepeatPassword"
         app:layout_constraintVertical_bias="0.154"
-        android:drawableStart="@drawable/ic_baseline_live_help_24"/>
+        android:drawableStart="@drawable/ic_baseline_live_help_24"
+        tools:ignore="RtlCompat" />
 
     <Button
         android:id="@+id/signUpBtn"

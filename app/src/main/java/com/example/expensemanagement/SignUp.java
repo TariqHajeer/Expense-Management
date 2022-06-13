@@ -5,12 +5,14 @@ import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.view.ViewCompat;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.icu.text.CaseMap;
 import android.os.Bundle;
+import android.telephony.mbms.MbmsErrors;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -54,7 +56,7 @@ public class SignUp extends AppCompatActivity {
             message += "Password is Required\n";
             ViewCompat.setBackgroundTintList(passwordTxt, ColorStateList.valueOf(Color.RED));
             ViewCompat.setBackgroundTintList(repeatPasswordTxt, ColorStateList.valueOf(Color.RED));
-        } else if (password != repeatPassword) {
+        } else if (password.compareTo(repeatPassword) != 0) {
             message += "Password and repeat password  not the same\n";
             ViewCompat.setBackgroundTintList(repeatPasswordTxt, ColorStateList.valueOf(Color.RED));
         }
@@ -68,9 +70,12 @@ public class SignUp extends AppCompatActivity {
         }
         User user = new User(name, password, passwordHint);
         addUser(user);
+        Intent i = new Intent(this, Login.class);
+        finish();
+        startActivity(i);
     }
 
     public void addUser(User user) {
-
+        userViewModel.insert(user);
     }
 }

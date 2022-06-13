@@ -27,7 +27,7 @@ public abstract class ExpenseManagementDatabase extends RoomDatabase {
 
     public abstract OutlayOwnerDao outlayOwnerDao();
     public abstract UserDao userDao();
-    private static final String dbName = "temp";
+    private static final String dbName = "temp2";
     private static volatile ExpenseManagementDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
     public static final ExecutorService databaseWriteExecutor =

@@ -15,6 +15,7 @@ public class User {
     private String password;
     @NonNull
     private String hint;
+
     public User(@NonNull String userName, @NonNull String password, @NonNull String hint) {
         this.setUserName(userName);
         this.setPassword(password);
@@ -31,7 +32,7 @@ public class User {
     }
 
     public void setUserName(@NonNull String userName) {
-        this.userName = userName.trim();
+        this.userName = userName.toLowerCase().trim();
     }
 
     @NonNull

@@ -23,8 +23,8 @@ public interface UserDao {
     @Delete
     void delete(User user);
 
-    @Query("SELECT * FROM User where userName=:userName and password=:password  ORDER BY ROWID ASC LIMIT 1")
-    LiveData<User> getUser(@NonNull String userName, @NonNull String password);
+    @Query("Select * From user ")
+    List<User> getUser();
 
     @Query("SELECT Count(*) FROM User")
     int checkUserExist();

@@ -4,10 +4,12 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 
 import com.example.expensemanagement.Domain.User;
 import com.example.expensemanagement.Repository.UserRepository;
 
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class UserViewModel extends AndroidViewModel {
@@ -23,7 +25,17 @@ public class UserViewModel extends AndroidViewModel {
             throw ex;
         }
     }
-    public  void insert(User user){
+
+    public List<User> getUser() throws ExecutionException, InterruptedException {
+        try {
+            return userRepository.getUser();
+        }
+        catch (InterruptedException | ExecutionException ex) {
+            throw ex;
+        }
+    }
+
+    public void insert(User user) {
         userRepository.insert(user);
     }
 
