@@ -1,40 +1,27 @@
-package com.example.expensemanagement.ui.gallery;
+package com.example.expensemanagement.ui.material;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 
-import com.example.expensemanagement.R;
+import com.example.expensemanagement.ViewModels.MaterialViewModel;
 import com.example.expensemanagement.databinding.FragmentGalleryBinding;
 
-public class GalleryFragment extends Fragment {
-
-//    private GalleryViewModel galleryViewModel;
+public class MaterialFragment extends Fragment {
     private FragmentGalleryBinding binding;
+    private MaterialViewModel materialViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-//        galleryViewModel =
-//                new ViewModelProvider(this).get(GalleryViewModel.class);
-
         binding = FragmentGalleryBinding.inflate(inflater, container, false);
+       // materialViewModel = new ViewModelProvider(this).get(MaterialViewModel.class);
         View root = binding.getRoot();
-
-        final TextView textView = binding.textGallery;
-//        galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//            }
-//        });
         return root;
     }
 
