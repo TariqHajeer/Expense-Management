@@ -10,11 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExpenseManagement">
         <activity
-            android:name=".Main2Activity"
-            android:exported="false"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.ExpenseManagement.NoActionBar" />
-        <activity
             android:name=".SignUp"
             android:exported="false" />
         <activity
