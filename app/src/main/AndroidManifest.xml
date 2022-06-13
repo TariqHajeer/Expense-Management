@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExpenseManagement">
         <activity
+            android:name=".DrawerActivity"
+            android:exported="false"
+            android:label="@string/title_activity_drawer"
+            android:theme="@style/Theme.ExpenseManagement.NoActionBar" />
+        <activity
             android:name=".SignUp"
             android:exported="false" />
         <activity

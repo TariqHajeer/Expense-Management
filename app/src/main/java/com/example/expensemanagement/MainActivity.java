@@ -11,18 +11,20 @@ import com.example.expensemanagement.ViewModels.UserViewModel;
 public class MainActivity extends AppCompatActivity {
 
     private UserViewModel userViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
         Intent i;
-        if(!userViewModel.userExist){
-             i = new Intent(this, WelcomeActivity.class);
+        if (!userViewModel.userExist) {
+            i = new Intent(this, WelcomeActivity.class);
 
-        }else{
+        } else {
             i = new Intent(this, Login.class);
         }
+        i = new Intent(this, DrawerActivity.class);
         finish();
         startActivity(i);
 
