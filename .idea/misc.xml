@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/t_w19/AndroidStudioProjects/ExpenseManagement/app/src/main/res/drawable-anydpi-v24/welcome1.xml" value="0.14322916666666666" />
+        <entry key="..\:/Users/t_w19/AndroidStudioProjects/ExpenseManagement/app/src/main/res/drawable/ic_baseline_align_vertical_bottom_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/t_w19/AndroidStudioProjects/ExpenseManagement/app/src/main/res/drawable/test_back_ground.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/t_w19/AndroidStudioProjects/ExpenseManagement/app/src/main/res/layout/activity_add_new_material.xml" value="0.12708333333333333" />
         <entry key="..\:/Users/t_w19/AndroidStudioProjects/ExpenseManagement/app/src/main/res/layout/activity_create_account.xml" value="0.25" />
         <entry key="..\:/Users/t_w19/AndroidStudioProjects/ExpenseManagement/app/src/main/res/layout/activity_login.xml" value="0.4" />
@@ -22,5 +24,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.264" />
+      </ProjectState>
+    </option>
   </component>
 </project>

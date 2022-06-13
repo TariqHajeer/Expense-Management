@@ -1,8 +1,14 @@
 package com.example.expensemanagement;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.drawable.DrawableCompat;
+import androidx.core.view.ViewCompat;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.icu.text.CaseMap;
 import android.os.Bundle;
 import android.view.View;
@@ -37,21 +43,31 @@ public class SignUp extends AppCompatActivity {
         String password = passwordTxt.getText().toString();
         String repeatPassword = repeatPasswordTxt.getText().toString();
         String passwordHint = passwordHintTxt.getText().toString();
-        if (name == null || name == "") {
-            Toast.makeText(this, "Name is Required",Toast.LENGTH_LONG).show();
-            return;
-        }
-        if(password==null||password==""){
-            Toast.makeText(this, "Password is Required",Toast.LENGTH_LONG).show();
-            return;
-        }
-        if(password!=repeatPassword){
-            Toast.makeText(this, "Password and repeat password  not the same ",Toast.LENGTH_LONG).show();
-            repeatPasswordTxt.setBackgroundColor(0xFF00FF00);
+        String message = "";
+        if (name == null || name.isEmpty() || name.trim().isEmpty()) {
+            message += "Name is Required\n";
 
+            ViewCompat.setBackgroundTintList(userNameTxt, ColorStateList.valueOf(Color.RED));
+
+        }
+        if (password == null || password.isEmpty() || password.trim().isEmpty()) {
+            message += "Password is Required\n";
+            ViewCompat.setBackgroundTintList(passwordTxt, ColorStateList.valueOf(Color.RED));
+            ViewCompat.setBackgroundTintList(repeatPasswordTxt, ColorStateList.valueOf(Color.RED));
+        } else if (password != repeatPassword) {
+            message += "Password and repeat password  not the same\n";
+            ViewCompat.setBackgroundTintList(repeatPasswordTxt, ColorStateList.valueOf(Color.RED));
+        }
+        if (passwordHint == null || passwordHint.isEmpty() || passwordHint.trim().isEmpty()) {
+            message += "Hint password is Required";
+            ViewCompat.setBackgroundTintList(passwordHintTxt, ColorStateList.valueOf(Color.RED));
+        }
+        if (message != "") {
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
             return;
         }
-       // User user = new User();
+        User user = new User(name, password, passwordHint);
+        addUser(user);
     }
 
     public void addUser(User user) {

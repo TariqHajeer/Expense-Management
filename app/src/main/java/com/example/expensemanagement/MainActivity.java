@@ -18,11 +18,9 @@ public class MainActivity extends AppCompatActivity {
         userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
         Intent i;
         if(!userViewModel.userExist){
-            //go to create an acount
              i = new Intent(this, WelcomeActivity.class);
 
         }else{
-            //go to login
             i = new Intent(this, Login.class);
         }
         finish();

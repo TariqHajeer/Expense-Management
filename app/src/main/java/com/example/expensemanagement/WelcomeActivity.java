@@ -24,7 +24,7 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-        loginBtn = findViewById(R.id.login_btn);
+
         userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
 
     }
