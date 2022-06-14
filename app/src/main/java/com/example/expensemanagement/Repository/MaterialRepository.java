@@ -50,19 +50,23 @@ public class MaterialRepository {
     public int count(@NonNull String name) throws ExecutionException, InterruptedException {
         final Future<Integer> future = ExpenseManagementDatabase.databaseWriteExecutor.submit(new Callable<Integer>() {
             @Override
-            public Integer call() throws Exception {
+            public Integer call() {
                 return materialDao.exist(name);
             }
         });
-        try {
-            return future.get();
-        } catch (InterruptedException | ExecutionException ex) {
-            throw ex;
-        }
+
+        return future.get();
     }
 
-    public int count(@NonNull String name, @NonNull int id) {
-        return materialDao.exist(name, id);
+    public int count(@NonNull String name, @NonNull int id) throws ExecutionException, InterruptedException {
+        final Future<Integer> future = ExpenseManagementDatabase.databaseWriteExecutor.submit(new Callable<Integer>() {
+            @Override
+            public Integer call() {
+                return materialDao.exist(name, id);
+            }
+        });
+        return future.get();
+
     }
 
 }
