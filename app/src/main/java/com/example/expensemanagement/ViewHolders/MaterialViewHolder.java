@@ -29,8 +29,7 @@ public class MaterialViewHolder extends RecyclerView.ViewHolder {
     public void bind(Material material) {
         name.setText(material.getName());
         description.setText(material.getDescription());
-        Log.d("TAG", material.getName() + Boolean.toString(material.getIsService()));
-        isService.setChecked(true);
+        isService.setChecked(material.getIsService());
     }
 
     public static MaterialViewHolder create(ViewGroup parent) {

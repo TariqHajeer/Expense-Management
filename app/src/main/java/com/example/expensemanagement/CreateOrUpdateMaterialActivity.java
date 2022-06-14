@@ -6,8 +6,10 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.ViewCompat;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,8 +30,13 @@ public class CreateOrUpdateMaterialActivity extends AppCompatActivity {
     private EditText material_description_edit_text;
     private Switch material_service_edit_switch;
     private Button save_material_btn;
-
+    public final static String Extra_Id = "CreateOrUpdateMaterialActivity.Id";
+    public final static String Extra_Name = "CreateOrUpdateMaterialActivity.Name";
+    public final static String Extra_Desc = "CreateOrUpdateMaterialActivity.Desc";
+    public final static String Extra_Is_Service = "CreateOrUpdateMaterialActivity.Is_Service";
     private MaterialViewModel materialViewModel;
+    private boolean isUpdate = false;
+    private int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +52,29 @@ public class CreateOrUpdateMaterialActivity extends AppCompatActivity {
         save_material_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (addMaterial(bind()))
+
+                if (addOrUpdate(bind()))
                     finish();
             }
         });
+        Intent i = getIntent();
+        if (i.hasExtra(Extra_Id)) {
+            material_label_Status.setText("Update material");
+            isUpdate = true;
+            String name = i.getStringExtra(Extra_Name);
+            String desc = i.getStringExtra(Extra_Desc);
+            boolean isService = i.getBooleanExtra(Extra_Is_Service, false);
+            id = i.getIntExtra(Extra_Id, 0);
+            Material material = new Material(name, desc, isService);
+            bind(material);
+        }
 
+    }
+
+    public void bind(Material material) {
+        material_name_edit_text.setText(material.getName());
+        material_description_edit_text.setText(material.getDescription());
+        material_service_edit_switch.setChecked(material.getIsService());
     }
 
     public Material bind() {
@@ -57,10 +82,36 @@ public class CreateOrUpdateMaterialActivity extends AppCompatActivity {
         String desc = material_description_edit_text.getText().toString();
         boolean service = material_service_edit_switch.isChecked();
         Material material = new Material(name, desc, service);
+        if (isUpdate) {
+
+            material.setId(id);
+        }
         return material;
     }
 
-    public boolean addMaterial(Material material) {
+    public boolean addOrUpdate(Material material) {
+
+        if (isUpdate) {
+
+        }
+        return add(material);
+    }
+
+    public boolean Update(Material material) {
+        boolean valid = false;
+
+        try {
+            valid = validateMaterial(material);
+        } catch (Exception ex) {
+            Toast.makeText(this, R.string.error, Toast.LENGTH_SHORT).show();
+        }
+        if (!valid)
+            return false;
+        materialViewModel.update(material);
+        return true;
+    }
+
+    public boolean add(Material material) {
         boolean valid = false;
         try {
             valid = validateMaterial(material);
@@ -70,10 +121,10 @@ public class CreateOrUpdateMaterialActivity extends AppCompatActivity {
         if (valid) {
             materialViewModel.inset(material);
             return true;
-
         }
         return false;
     }
+
 
     public boolean validateMaterial(Material material) throws ExecutionException, InterruptedException {
         if (material.getName().trim().isEmpty()) {
@@ -81,28 +132,30 @@ public class CreateOrUpdateMaterialActivity extends AppCompatActivity {
             ViewCompat.setBackgroundTintList(material_name_edit_text, ColorStateList.valueOf(Color.RED));
             return false;
         }
-        try {
-            if (material.getId() == 0) {
-                boolean result = validateNewMaterial(material);
-                if (!result) {
-                    Toast.makeText(this, R.string.nameRepeated, Toast.LENGTH_SHORT).show();
-                    ViewCompat.setBackgroundTintList(material_name_edit_text, ColorStateList.valueOf(Color.RED));
-                }
-                return result;
+        if (!isUpdate) {
+            boolean result = validateNewMaterial(material);
+            if (!result) {
+                Toast.makeText(this, R.string.nameRepeated, Toast.LENGTH_SHORT).show();
+                ViewCompat.setBackgroundTintList(material_name_edit_text, ColorStateList.valueOf(Color.RED));
             }
-            return false;
-        } catch (InterruptedException | ExecutionException ex) {
-            throw ex;
+            return result;
         }
+        boolean result = validOldMaterial(material);
+        if (!result) {
+            Toast.makeText(this, R.string.nameRepeated, Toast.LENGTH_SHORT).show();
+            ViewCompat.setBackgroundTintList(material_name_edit_text, ColorStateList.valueOf(Color.RED));
+        }
+        return false;
+    }
+
+
+    public boolean validOldMaterial(Material material) throws ExecutionException, InterruptedException {
+        Integer count = materialViewModel.count(material.getName(), material.getId());
+        return count == 0;
     }
 
     public boolean validateNewMaterial(Material material) throws ExecutionException, InterruptedException {
-        try {
-            Integer count = materialViewModel.count(material.getName());
-            return count == 0;
-        } catch (InterruptedException | ExecutionException ex) {
-            throw ex;
-        }
-
+        Integer count = materialViewModel.count(material.getName());
+        return count == 0;
     }
 }
