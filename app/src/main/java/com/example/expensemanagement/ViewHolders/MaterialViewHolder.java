@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,24 +15,25 @@ import com.example.expensemanagement.R;
 import com.example.expensemanagement.ViewModels.MaterialViewModel;
 
 public class MaterialViewHolder extends RecyclerView.ViewHolder {
-//    private final TextView name;
-//    private final TextView description;
-
+    private final TextView name;
+    private final TextView description ;
+    private final Switch isService;
     public MaterialViewHolder(@NonNull View itemView) {
         super(itemView);
-//        name = itemView.findViewById(R.id.nameTextView);
-//        description = itemView.findViewById(R.id.descriptionTextVew);
+        name = itemView.findViewById(R.id.material_name_text_view);
+        description = itemView.findViewById(R.id.material_description_text_view);
+        isService = itemView.findViewById(R.id.material_is_service);
     }
 
     public void bind(Material material) {
-//        name.setText(material.getName());
-//        description.setText(material.getDescription());
+        name.setText(material.getName());
+        description.setText(material.getDescription());
+        isService.setChecked(material.getIsService());
     }
 
     public static MaterialViewHolder create(ViewGroup parent) {
-//        View view = LayoutInflater.from(parent.getContext())
-//                .inflate(R.layout.recyclerview_item, parent, false);
-//        return new MaterialViewHolder(view);
-        return  null;
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.material_list_item, parent, false);
+        return new MaterialViewHolder(view);
     }
 }
