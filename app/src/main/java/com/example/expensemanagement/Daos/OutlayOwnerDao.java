@@ -1,5 +1,6 @@
 package com.example.expensemanagement.Daos;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -24,4 +25,9 @@ public interface OutlayOwnerDao {
 
     @Query("Select * from OutlayOwner")
     LiveData<List<OutlayOwner>> getAll();
+    @Query("Select Count(*) from OutlayOwner where name=:name")
+    public int exist(@NonNull String name);
+
+    @Query("Select Count(*) from OutlayOwner where name=:name and id!=:id")
+    public int exist(@NonNull String name,@NonNull int id);
 }

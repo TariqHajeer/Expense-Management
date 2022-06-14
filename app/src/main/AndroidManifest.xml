@@ -8,8 +8,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
-        android:theme="@style/Theme.ExpenseManagement"
-        >
+        android:theme="@style/Theme.ExpenseManagement">
+        <activity
+            android:name=".CreateOrUpdateOutlayOwnerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewModels.CreateOrUpdateOutlayOwnerActivity"
+            android:exported="false" />
         <activity
             android:name=".CreateOrUpdateMaterialActivity"
             android:exported="false" />

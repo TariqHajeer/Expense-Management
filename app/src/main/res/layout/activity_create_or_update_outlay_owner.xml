@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateOrUpdateMaterialActivity">
+    tools:context=".CreateOrUpdateOutlayOwnerActivity">
 
 
     <TextView
-        android:id="@+id/material_label_Status"
+        android:id="@+id/outlay_owner_label_Status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="Create material"
+        android:text="Create outlay owner"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,7 +23,7 @@
         app:layout_constraintVertical_bias="0.114" />
 
     <EditText
-        android:id="@+id/material_name_edit_text"
+        android:id="@+id/outlay_owner_name_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -38,11 +38,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/material_label_Status"
+        app:layout_constraintTop_toBottomOf="@+id/outlay_owner_label_Status"
         app:layout_constraintVertical_bias="0.202" />
 
     <EditText
-        android:id="@+id/material_description_edit_text"
+        android:id="@+id/outlay_owner_description_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -56,27 +56,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/material_name_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/outlay_owner_name_edit_text"
         app:layout_constraintVertical_bias="0.165" />
 
-    <Switch
-        android:id="@+id/material_service_edit_switch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:text="Switch"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/material_description_edit_text"
-        app:layout_constraintVertical_bias="0.157" />
 
     <Button
-        android:id="@+id/save_material_btn"
+        android:id="@+id/save_outlay_owner_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="104dp"
@@ -85,7 +70,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/material_service_edit_switch"
+        app:layout_constraintTop_toBottomOf="@+id/outlay_owner_description_edit_text"
         app:layout_constraintVertical_bias="0.0" />
 
 
