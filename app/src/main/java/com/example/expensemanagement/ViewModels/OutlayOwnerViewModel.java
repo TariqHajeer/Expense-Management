@@ -10,6 +10,7 @@ import com.example.expensemanagement.Domain.OutlayOwner;
 import com.example.expensemanagement.Repository.OutlayOwnerRepository;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class OutlayOwnerViewModel extends AndroidViewModel {
     private OutlayOwnerRepository outlayOwnerRepository;
@@ -31,6 +32,14 @@ public class OutlayOwnerViewModel extends AndroidViewModel {
 
     public void update(OutlayOwner outlayOwner) {
         outlayOwnerRepository.update(outlayOwner);
+    }
+
+    public int count(String name) throws ExecutionException, InterruptedException {
+        return outlayOwnerRepository.count(name);
+    }
+
+    public int count(String name, int id) throws ExecutionException, InterruptedException {
+        return outlayOwnerRepository.count(name, id);
     }
 
 }

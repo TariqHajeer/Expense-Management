@@ -21,7 +21,7 @@ import com.example.expensemanagement.Domain.User;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Material.class,OutlayOwner.class, User.class}, version = 1, exportSchema = false)
+@Database(entities = {Material.class,OutlayOwner.class, User.class}, version = 2, exportSchema = false)
 public abstract class ExpenseManagementDatabase extends RoomDatabase {
     public abstract MaterialDao materialDao();
 
