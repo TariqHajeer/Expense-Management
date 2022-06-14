@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.expensemanagement.Adapters.MaterialListAdapter;
 import com.example.expensemanagement.CreateOrUpdateMaterialActivity;
+import com.example.expensemanagement.R;
 import com.example.expensemanagement.ViewModels.MaterialViewModel;
 import com.example.expensemanagement.databinding.FragmentMaterialBinding;
 

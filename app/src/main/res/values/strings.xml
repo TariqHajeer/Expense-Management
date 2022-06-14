@@ -18,4 +18,5 @@
     <string name="AddMaterial">Add Material</string>
     <string name="error">something went wrong... Please restart the application </string>
     <string name="nameRepeated">The name is repeated </string>
+    <string name="nameRequired">The name is required </string>
 </resources>

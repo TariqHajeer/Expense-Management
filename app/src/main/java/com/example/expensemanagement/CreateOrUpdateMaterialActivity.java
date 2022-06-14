@@ -2,8 +2,11 @@ package com.example.expensemanagement;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.view.ViewCompat;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -67,16 +70,24 @@ public class CreateOrUpdateMaterialActivity extends AppCompatActivity {
             materialViewModel.inset(material);
             return true;
 
-        } else {
-            Toast.makeText(this, R.string.nameRepeated, Toast.LENGTH_SHORT).show();
         }
         return false;
     }
 
     public boolean validateMaterial(Material material) throws ExecutionException, InterruptedException {
+        if (material.getName().trim().isEmpty()) {
+            Toast.makeText(this, R.string.nameRequired, Toast.LENGTH_SHORT).show();
+            ViewCompat.setBackgroundTintList(material_name_edit_text, ColorStateList.valueOf(Color.RED));
+            return false;
+        }
         try {
             if (material.getId() == 0) {
-                return validateNewMaterial(material);
+                boolean result = validateNewMaterial(material);
+                if (!result) {
+                    Toast.makeText(this, R.string.nameRepeated, Toast.LENGTH_SHORT).show();
+                    ViewCompat.setBackgroundTintList(material_name_edit_text, ColorStateList.valueOf(Color.RED));
+                }
+                return result;
             }
             return false;
         } catch (InterruptedException | ExecutionException ex) {

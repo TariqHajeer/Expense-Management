@@ -16,8 +16,9 @@ import com.example.expensemanagement.ViewModels.MaterialViewModel;
 
 public class MaterialViewHolder extends RecyclerView.ViewHolder {
     private final TextView name;
-    private final TextView description ;
+    private final TextView description;
     private final Switch isService;
+
     public MaterialViewHolder(@NonNull View itemView) {
         super(itemView);
         name = itemView.findViewById(R.id.material_name_text_view);
@@ -28,7 +29,8 @@ public class MaterialViewHolder extends RecyclerView.ViewHolder {
     public void bind(Material material) {
         name.setText(material.getName());
         description.setText(material.getDescription());
-        isService.setChecked(material.getIsService());
+        Log.d("TAG", material.getName() + Boolean.toString(material.getIsService()));
+        isService.setChecked(true);
     }
 
     public static MaterialViewHolder create(ViewGroup parent) {
