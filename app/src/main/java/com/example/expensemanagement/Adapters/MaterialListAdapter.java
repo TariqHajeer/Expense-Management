@@ -22,14 +22,7 @@ public class MaterialListAdapter extends ListAdapter<Material, MaterialViewHolde
         super(diffCallback);
     }
 
-    public interface OnMaterialClickListener {
-        void onClick(Material material);
-    }
 
-    public void OnItemClickListener(OnMaterialClickListener listener) {
-
-        this.onMaterialClickListener = listener;
-    }
 
     @NonNull
     @Override
@@ -41,7 +34,6 @@ public class MaterialListAdapter extends ListAdapter<Material, MaterialViewHolde
     @Override
     public void onBindViewHolder(@NonNull MaterialViewHolder holder, int position) {
         Material current = getItem(position);
-
         holder.bind(current);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,10 +43,12 @@ public class MaterialListAdapter extends ListAdapter<Material, MaterialViewHolde
                 }
             }
         });
-        CardView c = (CardView) holder.itemView;
 
     }
 
+    public interface OnMaterialClickListener{
+        void onClick(Material material);
+    }
     public static class MaterialDiff extends DiffUtil.ItemCallback<Material> {
 
         @Override
