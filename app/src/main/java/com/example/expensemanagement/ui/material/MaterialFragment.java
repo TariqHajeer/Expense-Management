@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.expensemanagement.Adapters.MaterialListAdapter;
+import com.example.expensemanagement.CreateOrUpdateMaterialActivity;
 import com.example.expensemanagement.ViewModels.MaterialViewModel;
 import com.example.expensemanagement.databinding.FragmentMaterialBinding;
 
@@ -35,8 +36,8 @@ public class MaterialFragment extends Fragment {
         binding.addMaterialFabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent i = new Intent(getActivity(), AddMaterialActivity.class);
-//                startActivity(i);
+                Intent i = new Intent(getActivity(), CreateOrUpdateMaterialActivity.class);
+                startActivity(i);
             }
         });
         return root;

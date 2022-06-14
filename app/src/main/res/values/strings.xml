@@ -16,4 +16,6 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="AddMaterial">Add Material</string>
+    <string name="error">something went wrong... Please restart the application </string>
+    <string name="nameRepeated">The name is repeated </string>
 </resources>
