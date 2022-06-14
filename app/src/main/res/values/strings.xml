@@ -19,4 +19,5 @@
     <string name="error">something went wrong... Please restart the application </string>
     <string name="nameRepeated">The name is repeated </string>
     <string name="nameRequired">The name is required </string>
+    <string name="save">Save</string>
 </resources>
