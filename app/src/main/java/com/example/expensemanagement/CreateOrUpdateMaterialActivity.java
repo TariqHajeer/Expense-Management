@@ -92,12 +92,12 @@ public class CreateOrUpdateMaterialActivity extends AppCompatActivity {
     public boolean addOrUpdate(Material material) {
 
         if (isUpdate) {
-
+            return update(material);
         }
         return add(material);
     }
 
-    public boolean Update(Material material) {
+    public boolean update(Material material) {
         boolean valid = false;
 
         try {
@@ -144,8 +144,9 @@ public class CreateOrUpdateMaterialActivity extends AppCompatActivity {
         if (!result) {
             Toast.makeText(this, R.string.nameRepeated, Toast.LENGTH_SHORT).show();
             ViewCompat.setBackgroundTintList(material_name_edit_text, ColorStateList.valueOf(Color.RED));
+            return  false;
         }
-        return false;
+        return true;
     }
 
 
