@@ -29,4 +29,10 @@ public class OutlayOwnerRepository {
             outlayOwnerDao.insert(outlayOwner);
         });
     }
+
+    public void update(OutlayOwner outlayOwner) {
+        ExpenseManagementDatabase.databaseWriteExecutor.execute(() -> {
+            outlayOwnerDao.update(outlayOwner);
+        });
+    }
 }
