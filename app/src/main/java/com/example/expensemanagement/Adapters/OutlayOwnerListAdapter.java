@@ -13,10 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.expensemanagement.Domain.OutlayOwner;
 import com.example.expensemanagement.ViewHolders.OutlayOwnerViewHolder;
 
-public class OutlayOwnerAdapter extends ListAdapter<OutlayOwner, OutlayOwnerViewHolder> {
+public class OutlayOwnerListAdapter extends ListAdapter<OutlayOwner, OutlayOwnerViewHolder> {
     public OnOutlayOwnerCLickListener onOutlayOwnerCLickListener;
 
-    public OutlayOwnerAdapter(@NonNull DiffUtil.ItemCallback<OutlayOwner> diffCallback) {
+    public OutlayOwnerListAdapter(@NonNull DiffUtil.ItemCallback<OutlayOwner> diffCallback) {
         super(diffCallback);
     }
 
