@@ -19,15 +19,15 @@ import com.example.expensemanagement.ViewModels.OutlayOwnerViewModel;
 
 import java.util.concurrent.ExecutionException;
 
-public class CreateOrUpdateOutlayOwner extends AppCompatActivity {
+public class CreateOrUpdateOutlayOwnerActivity extends AppCompatActivity {
     private TextView outlayOwner_label_Status;
     private EditText outlayOwner_name_edit_text;
     private EditText outlayOwner_description_edit_text;
     private Button save_outlayOwner_btn;
     private boolean isUpdate = false;
-    public final static String Extra_id = "CreateOrUpdateOutlayOwner.id";
-    public final static String Extra_name = "CreateOrUpdateOutlayOwner.name";
-    public final static String Extra_desc = "CreateOrUpdateOutlayOwner.desc";
+    public final static String Extra_id = "CreateOrUpdateOutlayOwnerActivity.id";
+    public final static String Extra_name = "CreateOrUpdateOutlayOwnerActivity.name";
+    public final static String Extra_desc = "CreateOrUpdateOutlayOwnerActivity.desc";
     private int id = 0;
 
     private OutlayOwnerViewModel outlayOwnerViewModel;

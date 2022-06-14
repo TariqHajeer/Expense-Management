@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.expensemanagement.Adapters.OutlayOwnerListAdapter;
-import com.example.expensemanagement.CreateOrUpdateOutlayOwner;
+import com.example.expensemanagement.CreateOrUpdateOutlayOwnerActivity;
 import com.example.expensemanagement.Domain.OutlayOwner;
 import com.example.expensemanagement.ViewModels.OutlayOwnerViewModel;
 import com.example.expensemanagement.databinding.FragmentOutlayOwnerBinding;
@@ -33,7 +33,11 @@ public class OutlayOwnerFragment extends Fragment {
         adapter.onOutlayOwnerCLickListener = new OutlayOwnerListAdapter.OnOutlayOwnerCLickListener() {
             @Override
             public void onClick(OutlayOwner outlayOwner) {
-
+                Intent i = new Intent(getActivity(), CreateOrUpdateOutlayOwnerActivity.class);
+                i.putExtra(CreateOrUpdateOutlayOwnerActivity.Extra_id, outlayOwner.getId());
+                i.putExtra(CreateOrUpdateOutlayOwnerActivity.Extra_name, outlayOwner.getName());
+                i.putExtra(CreateOrUpdateOutlayOwnerActivity.Extra_desc, outlayOwner.getDescription());
+                startActivity(i);
             }
         };
         recyclerView.setAdapter(adapter);
@@ -44,7 +48,7 @@ public class OutlayOwnerFragment extends Fragment {
         binding.outlayOwnerFabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), CreateOrUpdateOutlayOwner.class);
+                Intent i = new Intent(view.getContext(), CreateOrUpdateOutlayOwnerActivity.class);
                 startActivity(i);
             }
         });

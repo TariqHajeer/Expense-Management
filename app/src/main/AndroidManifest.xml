@@ -10,7 +10,7 @@
         android:supportsRtl="false"
         android:theme="@style/Theme.ExpenseManagement">
         <activity
-            android:name=".CreateOrUpdateOutlayOwner"
+            android:name=".CreateOrUpdateOutlayOwnerActivity"
             android:exported="false" />
         <activity
             android:name=".ViewModels.CreateOrUpdateOutlayOwnerActivity"
