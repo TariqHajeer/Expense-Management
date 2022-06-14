@@ -86,8 +86,9 @@ public class CreateOrUpdateOutlayOwnerActivity extends AppCompatActivity {
     public boolean validateNew(OutlayOwner outlayOwner) {
         try {
             int count = outlayOwnerViewModel.count(outlayOwner.getName());
-            if (count == 0) {
+            if (count != 0) {
                 Toast.makeText(this, R.string.nameRepeated, Toast.LENGTH_SHORT).show();
+                ViewCompat.setBackgroundTintList(outlayOwner_name_edit_text, ColorStateList.valueOf(Color.RED));
             }
             return count == 0;
         } catch (ExecutionException | InterruptedException ex) {
@@ -101,8 +102,9 @@ public class CreateOrUpdateOutlayOwnerActivity extends AppCompatActivity {
     public boolean validateOld(OutlayOwner outlayOwner) {
         try {
             int count = outlayOwnerViewModel.count(outlayOwner.getName(), outlayOwner.getId());
-            if (count == 0) {
+            if (count != 0) {
                 Toast.makeText(this, R.string.nameRepeated, Toast.LENGTH_SHORT).show();
+                ViewCompat.setBackgroundTintList(outlayOwner_name_edit_text, ColorStateList.valueOf(Color.RED));
             }
             return count == 0;
         } catch (ExecutionException | InterruptedException ex) {
