@@ -8,6 +8,7 @@ import com.example.expensemanagement.DBViews.FullOutlay;
 import com.example.expensemanagement.Daos.OutlayDao;
 import com.example.expensemanagement.Database.ExpenseManagementDatabase;
 import com.example.expensemanagement.Domain.Outlay;
+import com.example.expensemanagement.Helper.Callback;
 
 
 import java.util.List;
@@ -27,14 +28,25 @@ public class OutlayRepository {
     }
 
     public void insert(Outlay outlay) {
-        outlayDao.insert(outlay);
+        ExpenseManagementDatabase.databaseWriteExecutor.execute(() -> {
+            outlayDao.insert(outlay);
+        });
+    }
+    public LiveData<Outlay> getById(int id) {
+        return outlayDao.getById(id);
     }
 
     public void update(Outlay outlay) {
-        outlayDao.update(outlay);
+        ExpenseManagementDatabase.databaseWriteExecutor.execute(()->{
+            outlayDao.update(outlay);
+        });
+
     }
 
     public void delete(Outlay outlay) {
-        outlayDao.delete(outlay);
+        ExpenseManagementDatabase.databaseWriteExecutor.execute(()->{
+            outlayDao.delete(outlay);
+        });
+
     }
 }

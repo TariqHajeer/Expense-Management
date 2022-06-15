@@ -83,6 +83,7 @@
             android:src="@drawable/ic_baseline_date_range_24" />
 
         <TextView
+            android:id="@+id/outlay_date_Text_Veiw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/outlay_price_text_view"

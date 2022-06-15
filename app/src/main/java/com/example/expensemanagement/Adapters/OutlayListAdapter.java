@@ -1,10 +1,12 @@
 package com.example.expensemanagement.Adapters;
 
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.expensemanagement.DBViews.FullOutlay;
 import com.example.expensemanagement.Domain.Outlay;
@@ -18,7 +20,7 @@ public class OutlayListAdapter extends ListAdapter<FullOutlay, OutlayViewHolder>
     }
 
     public interface OnOutlayClickListener {
-        void onClick(Outlay outlay);
+        void onClick(int outlayId);
     }
 
     @NonNull
@@ -27,10 +29,22 @@ public class OutlayListAdapter extends ListAdapter<FullOutlay, OutlayViewHolder>
         return OutlayViewHolder.create(parent);
     }
 
+    public  int getId(int position){
+        return getItem(position).getId();
+    }
+
     @Override
     public void onBindViewHolder(@NonNull OutlayViewHolder holder, int position) {
         FullOutlay current = getItem(position);
         holder.bind(current);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (onOutlayClickListener != null && position != RecyclerView.NO_POSITION) {
+                    onOutlayClickListener.onClick(current.getId());
+                }
+            }
+        });
     }
 
     public static class OutlayDiff extends DiffUtil.ItemCallback<FullOutlay> {

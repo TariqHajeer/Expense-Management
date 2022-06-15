@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -42,17 +43,38 @@ public class OutlayFragment extends Fragment {
         final OutlayListAdapter adapter = new OutlayListAdapter(new OutlayListAdapter.OutlayDiff());
         adapter.onOutlayClickListener = new OutlayListAdapter.OnOutlayClickListener() {
             @Override
-            public void onClick(Outlay outlay) {
+            public void onClick(int outlayId) {
                 Intent i = new Intent(getActivity(), CreateOrUpdateOutlayActivity.class);
+                i.putExtra(CreateOrUpdateOutlayActivity.Extra_Id, outlayId);
                 startActivity(i);
             }
         };
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        outlayViewModel.getAll().observe(this, outlays -> {
-            Log.i("Tag", Integer.toString(outlays.size()));
+        outlayViewModel.getAll().observe(getActivity(), outlays -> {
             adapter.submitList(outlays);
         });
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                int position = viewHolder.getAbsoluteAdapterPosition();
+                int id = adapter.getId(position);
+                outlayViewModel.getById(id).observe(getActivity(), outlay -> {
+                    outlayViewModel.delete(outlay);
+                    outlayViewModel.getAll().observe(getActivity(),outlays->{
+                        adapter.submitList(outlays);
+                        adapter.notifyDataSetChanged();
+
+                    });
+                });
+
+            }
+        }).attachToRecyclerView(recyclerView);
         return root;
     }
 
