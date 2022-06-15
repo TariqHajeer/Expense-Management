@@ -1,6 +1,7 @@
 package com.example.expensemanagement.ViewModels;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -18,6 +19,7 @@ public class OutlayOwnerViewModel extends AndroidViewModel {
 
     public OutlayOwnerViewModel(@NonNull Application application) {
         super(application);
+        Log.i("OutlayOwnerViewModel","OutlayOwnerViewModel");
         outlayOwnerRepository = new OutlayOwnerRepository(application);
         outlayOwners = outlayOwnerRepository.getAll();
     }

@@ -20,11 +20,12 @@ import java.util.Date;
 public class Outlay {
 
 
-    public Outlay(@NonNull int material_id, @NonNull int outlayOwner_id, @NonNull double price, String description) {
+    public Outlay(@NonNull int material_id, @NonNull int outlayOwner_id, @NonNull double price,@NonNull String description,@NonNull Date date) {
         this.material_id = material_id;
         this.outlayOwner_id = outlayOwner_id;
         this.price = price;
         this.setDescription(description);
+        this.date =date;
     }
 
     public void setId(int id) {

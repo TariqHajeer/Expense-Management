@@ -26,6 +26,6 @@ public interface OutlayDao {
     @Update
     void update(Outlay outlay);
 
-    @Query("Select * from FullOutlay")
-    LiveData<List<FullOutlay>> GetAll();
+    @Query("Select * from FullOutlay order by date")
+    LiveData<List<FullOutlay>> getAll();
 }

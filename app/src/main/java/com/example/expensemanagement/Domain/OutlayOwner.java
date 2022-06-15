@@ -42,4 +42,9 @@ public class OutlayOwner {
     public String getDescription() {
         return this.description;
     }
+
+    @Override
+    public String toString() {
+        return  name;
+    }
 }
