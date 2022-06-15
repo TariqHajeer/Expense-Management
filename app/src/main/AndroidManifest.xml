@@ -10,6 +10,9 @@
         android:supportsRtl="false"
         android:theme="@style/Theme.ExpenseManagement">
         <activity
+            android:name=".CreateOrUpdateOutlayActivity"
+            android:exported="false" />
+        <activity
             android:name=".CreateOrUpdateOutlayOwnerActivity"
             android:exported="false" />
         <activity
