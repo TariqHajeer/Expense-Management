@@ -8,7 +8,7 @@ import com.example.expensemanagement.Helper.DateConverter;
 import java.util.Date;
 
 @DatabaseView(
-        "SELECT o.id as id,o.material_id as material_id,o.outlayOwner_id as outlayOwner_id,o.price as price,o.date as date ,m.name as material_name,oo.name as outlayOwner_name " +
+        "SELECT o.id as id,o.description as description,o.material_id as material_id,o.outlayOwner_id as outlayOwner_id,o.price as price,o.date as date ,m.name as material_name,oo.name as outlayOwner_name " +
                 "From Outlay o " +
                 "JOIN Material m " +
                 "on m.id ==o.material_id " +

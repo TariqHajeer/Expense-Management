@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="205dp"
         tools:layout_editor_absoluteY="166dp"
-        tools:listitem="@layout/outlay_list_item"></androidx.recyclerview.widget.RecyclerView>
+        tools:listitem="@layout/outlay_owner_list_item"></androidx.recyclerview.widget.RecyclerView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/outlay_owner_fab_button"
