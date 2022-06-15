@@ -28,4 +28,6 @@ public interface OutlayDao {
 
     @Query("Select * from FullOutlay order by date")
     LiveData<List<FullOutlay>> getAll();
+    @Query("Select * from Outlay where id=:id")
+    LiveData<Outlay> getById(int id );
 }

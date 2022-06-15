@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.expensemanagement.Domain.Material;
 import com.example.expensemanagement.Domain.OutlayOwner;
 import com.example.expensemanagement.ViewHolders.OutlayOwnerViewHolder;
 
@@ -38,6 +39,10 @@ public class OutlayOwnerListAdapter extends ListAdapter<OutlayOwner, OutlayOwner
                 }
             }
         });
+    }
+
+    public OutlayOwner getItemAt(int position) {
+        return getItem(position);
     }
 
     public static class OutlayOwnerDiff extends DiffUtil.ItemCallback<OutlayOwner> {

@@ -23,7 +23,6 @@ public class MaterialListAdapter extends ListAdapter<Material, MaterialViewHolde
     }
 
 
-
     @NonNull
     @Override
     public MaterialViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -46,9 +45,14 @@ public class MaterialListAdapter extends ListAdapter<Material, MaterialViewHolde
 
     }
 
-    public interface OnMaterialClickListener{
+    public Material getItemAt(int position) {
+        return getItem(position);
+    }
+
+    public interface OnMaterialClickListener {
         void onClick(Material material);
     }
+
     public static class MaterialDiff extends DiffUtil.ItemCallback<Material> {
 
         @Override

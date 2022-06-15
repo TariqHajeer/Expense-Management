@@ -39,6 +39,11 @@ public class OutlayOwnerRepository {
             outlayOwnerDao.update(outlayOwner);
         });
     }
+    public  void delete(OutlayOwner outlayOwner){
+        ExpenseManagementDatabase.databaseWriteExecutor.execute(() -> {
+            outlayOwnerDao.delete(outlayOwner);
+        });
+    }
 
     public int count(@NonNull String name) throws ExecutionException, InterruptedException {
         final Future<Integer> future = ExpenseManagementDatabase.databaseWriteExecutor.submit(new Callable<Integer>() {

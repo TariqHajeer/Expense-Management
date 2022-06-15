@@ -10,12 +10,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.expensemanagement.Adapters.OutlayOwnerListAdapter;
 import com.example.expensemanagement.CreateOrUpdateOutlayOwnerActivity;
 import com.example.expensemanagement.Domain.OutlayOwner;
+import com.example.expensemanagement.ViewHolders.OutlayViewHolder;
 import com.example.expensemanagement.ViewModels.OutlayOwnerViewModel;
 import com.example.expensemanagement.databinding.FragmentOutlayOwnerBinding;
 
@@ -53,6 +55,19 @@ public class OutlayOwnerFragment extends Fragment {
                 startActivity(i);
             }
         });
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                int position = viewHolder.getAbsoluteAdapterPosition();
+                OutlayOwner owner = adapter.getItemAt(position);
+                outlayOwnerViewModel.delete(owner);
+            }
+        }).attachToRecyclerView(recyclerView);
         return root;
     }
 

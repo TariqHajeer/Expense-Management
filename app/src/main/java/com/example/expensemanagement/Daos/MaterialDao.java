@@ -32,4 +32,6 @@ public interface MaterialDao {
 
     @Query("Select Count(*) from Material where name=:name and id!=:id")
     public int exist(@NonNull String name,@NonNull int id);
+
+
 }

@@ -1,5 +1,7 @@
 package com.example.expensemanagement.Domain;
 
+import static androidx.room.ForeignKey.CASCADE;
+
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -13,8 +15,8 @@ import java.util.Date;
 
 @Entity(
         foreignKeys = {
-                @ForeignKey(parentColumns = {"id"}, childColumns = {"material_id"}, entity = Material.class),
-                @ForeignKey(parentColumns = {"id"}, childColumns = {"outlayOwner_id"}, entity = OutlayOwner.class)
+                @ForeignKey(parentColumns = {"id"}, childColumns = {"material_id"}, entity = Material.class,onDelete = CASCADE),
+                @ForeignKey(parentColumns = {"id"}, childColumns = {"outlayOwner_id"}, entity = OutlayOwner.class,onDelete = CASCADE )
         })
 @TypeConverters({DateConverter.class})
 public class Outlay {
