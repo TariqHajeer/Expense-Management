@@ -1,6 +1,7 @@
 package com.example.expensemanagement;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,10 +11,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 
+import com.example.expensemanagement.ViewModels.OutlayViewModel;
+
 import java.util.Date;
 
 public class OutlayFilterResponse extends AppCompatActivity {
-    public final static String reportType = "OutlayFilterResponse.type";
     public final static String fromDate = "OutlayFilterResponse.fromDate";
     public final static String toDate = "OutlayFilterResponse.toDate";
     public final static String material_id = "OutlayFilterResponse.material_id";
@@ -23,10 +25,12 @@ public class OutlayFilterResponse extends AppCompatActivity {
     private Spinner months_spinner = findViewById(R.id.months_spinner);
     private EditText date_report_year_text_view = findViewById(R.id.date_report_year_text_view);
 
-
+    private OutlayViewModel outlayViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_outlay_filter_response);
+        outlayViewModel = ViewModelProviders.of(this).get(OutlayViewModel.class);
+        
     }
 }
