@@ -59,7 +59,7 @@ public class DateReportFragment extends Fragment {
         TextView dateReportSumTextView = binding.dateReportSumTextView;
         TextView date_report_sum_label = binding.dateReportSumLabel;
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-        date_report_year_text_view.setText(currentYear);
+        date_report_year_text_view.setText(Integer.toString(currentYear));
         date_report_search_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
