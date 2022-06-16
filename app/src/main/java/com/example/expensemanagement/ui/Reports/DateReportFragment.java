@@ -38,10 +38,12 @@ public class DateReportFragment extends Fragment {
     private Date from = null;
     private Date to = null;
     private DateFormat dateFormat;
+    private Button date_report_view_details_btn;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentDateReportBinding.inflate(inflater, container, false);
+        date_report_view_details_btn = binding.dateReportViewDetailsBtn;
         dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         outlayViewModel = new ViewModelProvider(this).get(OutlayViewModel.class);
         View root = binding.getRoot();
@@ -102,13 +104,13 @@ public class DateReportFragment extends Fragment {
                                 dateReportSumTextView.setText(Double.toString(obj));
                                 dateReportSumTextView.setVisibility(View.VISIBLE);
                                 date_report_sum_label.setVisibility(View.VISIBLE);
+                                date_report_view_details_btn.setVisibility(View.VISIBLE);
                             }
                         });
                     }
                 });
             }
         });
-        Button date_report_view_details_btn = binding.dateReportViewDetailsBtn;
         date_report_view_details_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
