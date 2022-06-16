@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.expensemanagement.DBViews.FullOutlay;
+import com.example.expensemanagement.DBViews.TotalView;
 import com.example.expensemanagement.Domain.Outlay;
 import com.example.expensemanagement.Helper.Callback;
 import com.example.expensemanagement.Repository.OutlayRepository;
@@ -64,6 +65,10 @@ public class OutlayViewModel extends AndroidViewModel {
 
     public LiveData<List<FullOutlay>> getByMaterial(int material_id) {
         return repository.getByMaterial(material_id);
+    }
+
+    public LiveData<List<TotalView>> getTotal(boolean isService) {
+        return repository.getTotal(isService);
     }
 
     public LiveData<List<FullOutlay>> getByOwner(int owner_id) {

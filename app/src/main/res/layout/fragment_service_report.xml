@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Reports.MaterialReportFragment">
-
+    tools:context=".ui.Reports.ServiceReportFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/material_report_RecyclerView"
@@ -13,5 +12,4 @@
         tools:layout_editor_absoluteX="205dp"
         tools:layout_editor_absoluteY="166dp"
         tools:listitem="@layout/materail_with_total"></androidx.recyclerview.widget.RecyclerView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

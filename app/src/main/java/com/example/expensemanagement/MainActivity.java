@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             i = new Intent(this, Login.class);
         }
+        i =new Intent(this,DrawerActivity.class);
         startActivity(i);
 
     }

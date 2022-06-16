@@ -12,6 +12,7 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.expensemanagement.DBViews.FullOutlay;
+import com.example.expensemanagement.DBViews.TotalView;
 import com.example.expensemanagement.Daos.MaterialDao;
 import com.example.expensemanagement.Daos.OutlayDao;
 import com.example.expensemanagement.Daos.OutlayOwnerDao;
@@ -24,7 +25,7 @@ import com.example.expensemanagement.Domain.User;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Material.class, OutlayOwner.class, User.class, Outlay.class},views = {FullOutlay.class}, version = 1, exportSchema = true)
+@Database(entities = {Material.class, OutlayOwner.class, User.class, Outlay.class},views = {FullOutlay.class, TotalView.class}, version = 1, exportSchema = true)
 public abstract class ExpenseManagementDatabase extends RoomDatabase {
     public abstract MaterialDao materialDao();
 
@@ -34,7 +35,7 @@ public abstract class ExpenseManagementDatabase extends RoomDatabase {
 
     public abstract OutlayDao outlayDao();
 
-    private static final String dbName = "temp4";
+    private static final String dbName = "temp6";
     /*
     volatile this word to force thread work in the original instance on the memory
      */
