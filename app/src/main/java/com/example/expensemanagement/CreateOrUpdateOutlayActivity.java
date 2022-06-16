@@ -174,7 +174,7 @@ public class CreateOrUpdateOutlayActivity extends AppCompatActivity {
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         month++;
         String _d = year + "-" + month + "-" + day;
-        SimpleDateFormat dt = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
         Date date = dt.parse(_d);
         return date;
     }

@@ -12,6 +12,7 @@ import com.example.expensemanagement.DBViews.FullOutlay;
 import com.example.expensemanagement.Domain.Outlay;
 import com.example.expensemanagement.Helper.DateConverter;
 
+import java.util.Date;
 import java.util.List;
 
 @Dao
@@ -26,8 +27,15 @@ public interface OutlayDao {
     @Update
     void update(Outlay outlay);
 
-    @Query("Select * from FullOutlay order by date")
+    @Query("Select * from FullOutlay order by date desc")
     LiveData<List<FullOutlay>> getAll();
+
     @Query("Select * from Outlay where id=:id")
-    LiveData<Outlay> getById(int id );
+    LiveData<Outlay> getById(int id);
+
+    @Query("Select * from FullOutlay where date >= :from and date <= :to ")
+    LiveData<List<FullOutlay>> getDateFilter(Date from, Date to);
+
+    @Query("Select Sum(price) from FullOutlay where date >= :from and date<= :to ")
+    double sumDateFilter(Date from, Date to);
 }

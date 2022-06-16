@@ -31,7 +31,7 @@ public class OutlayViewHolder extends RecyclerView.ViewHolder {
         materialNameTxt = itemView.findViewById(R.id.outlay_material_name_text_view);
         ownerNameTxt = itemView.findViewById(R.id.outlay_owner_name_TextView);
         priceTxt = itemView.findViewById(R.id.outlay_price_text_view);
-        dateTxt = itemView.findViewById(R.id.outlay_date_Text_Veiw);
+        dateTxt = itemView.findViewById(R.id.outlay_date_Text_View);
 
     }
 
@@ -39,7 +39,7 @@ public class OutlayViewHolder extends RecyclerView.ViewHolder {
         materialNameTxt.setText(outlay.getMaterial_name());
         ownerNameTxt.setText(outlay.getOutlayOwner_name());
         priceTxt.setText(Double.toString(outlay.getPrice()));
-        SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-MM-dd");
         dateTxt.setText(dt1.format(outlay.getDate()));
     }
 
