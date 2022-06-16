@@ -58,7 +58,8 @@ public class DateReportFragment extends Fragment {
         EditText date_report_year_text_view = binding.dateReportYearTextView;
         TextView dateReportSumTextView = binding.dateReportSumTextView;
         TextView date_report_sum_label = binding.dateReportSumLabel;
-
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        date_report_year_text_view.setText(currentYear);
         date_report_search_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,7 +105,8 @@ public class DateReportFragment extends Fragment {
                                 dateReportSumTextView.setText(Double.toString(obj));
                                 dateReportSumTextView.setVisibility(View.VISIBLE);
                                 date_report_sum_label.setVisibility(View.VISIBLE);
-                                date_report_view_details_btn.setVisibility(View.VISIBLE);
+                                if (obj.compareTo(0.0) != 0)
+                                    date_report_view_details_btn.setVisibility(View.VISIBLE);
                             }
                         });
                     }
