@@ -54,6 +54,7 @@ public class Login extends AppCompatActivity {
         String originalPassword = u.getPassword();
         if (originalPassword.compareTo(password) == 0 && originalUsername.compareTo(userName) == 0) {
             Intent i = new Intent(this,DrawerActivity.class);
+            startActivity(i);
             //go to login
         } else {
             ViewCompat.setBackgroundTintList(userNameTxt, ColorStateList.valueOf(Color.RED));
