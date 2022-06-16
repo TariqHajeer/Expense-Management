@@ -51,6 +51,10 @@ public class OutlayRepository {
         });
     }
 
+    public LiveData<List<FullOutlay>> getByDateFilter(Date from, Date to) {
+        return outlayDao.getDateFilter(from, to);
+    }
+
     public void sumDateFilter(Date from, Date to, Callback<Double> callback) {
         ExpenseManagementDatabase.databaseWriteExecutor.execute(() -> {
             double sum = outlayDao.sumDateFilter(from, to);
@@ -74,7 +78,8 @@ public class OutlayRepository {
     public LiveData<List<FullOutlay>> getByMaterial(int material_id) {
         return outlayDao.getByMaterial(material_id);
     }
-    public LiveData<List<FullOutlay>> getByOwner(int owner_id){
-        return  outlayDao.getByOwner(owner_id);
+
+    public LiveData<List<FullOutlay>> getByOwner(int owner_id) {
+        return outlayDao.getByOwner(owner_id);
     }
 }

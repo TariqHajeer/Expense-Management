@@ -36,14 +36,16 @@ public interface OutlayDao {
     @Query("Select * from FullOutlay where date >= :from and date <= :to ")
     LiveData<List<FullOutlay>> getDateFilter(Date from, Date to);
 
+    @Query("Select Sum(price) from FullOutlay where date >= :from and date<= :to ")
+    double sumDateFilter(Date from, Date to);
+
     @Query("Select * from FullOutlay where material_id=:material_id ")
     LiveData<List<FullOutlay>> getByMaterial(int material_id);
 
     @Query("Select * from FullOutlay where outlayOwner_id =:ower_id ")
     LiveData<List<FullOutlay>> getByOwner(int ower_id);
 
-    @Query("Select Sum(price) from FullOutlay where date >= :from and date<= :to ")
-    double sumDateFilter(Date from, Date to);
+
 
     @Query("Select sum(price) from FullOutlay where material_id =:material_id")
     double sumByMaterial(int material_id);
