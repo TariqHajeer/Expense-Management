@@ -7,7 +7,6 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.expensemanagement.DBViews.FullOutlay;
-import com.example.expensemanagement.Database.ExpenseManagementDatabase;
 import com.example.expensemanagement.Domain.Outlay;
 import com.example.expensemanagement.Helper.Callback;
 import com.example.expensemanagement.Repository.OutlayRepository;
@@ -49,5 +48,13 @@ public class OutlayViewModel extends AndroidViewModel {
 
     public void sumDateFilter(Date from, Date to, Callback<Double> callback) {
         repository.sumDateFilter(from, to, callback);
+    }
+
+    public void sumByMaterial(int material_id, Callback<Double> callback) {
+        repository.sumByMaterial(material_id, callback);
+    }
+
+    public void sumByOwner(int owner_id, Callback<Double> callback) {
+        repository.sumByOwner(owner_id, callback);
     }
 }

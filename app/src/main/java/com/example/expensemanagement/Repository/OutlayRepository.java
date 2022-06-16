@@ -57,4 +57,17 @@ public class OutlayRepository {
             callback.invoke(sum);
         });
     }
+
+    public void sumByMaterial(int material_id, Callback<Double> callback) {
+        ExpenseManagementDatabase.databaseWriteExecutor.execute(() -> {
+            double sum = outlayDao.sumByMaterial(material_id);
+            callback.invoke(sum);
+        });
+    }
+
+    public void sumByOwner(int owner_id, Callback<Double> callback) {
+        ExpenseManagementDatabase.databaseWriteExecutor.execute(() -> {
+            callback.invoke(outlayDao.sumByOwner(owner_id));
+        });
+    }
 }
