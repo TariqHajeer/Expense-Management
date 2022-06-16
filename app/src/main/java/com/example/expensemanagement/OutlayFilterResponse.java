@@ -29,6 +29,7 @@ public class OutlayFilterResponse extends AppCompatActivity {
     public final static String toDate = "OutlayFilterResponse.toDate";
     public final static String material_id = "OutlayFilterResponse.material_id";
     public final static String owner_id = "OutlayFilterResponse.owner_id";
+    private final static String Extra_IsService = "OutlayFilterResponse.IsService";
     private OutlayListAdapter adapter;
     private OutlayViewModel outlayViewModel;
 
@@ -48,6 +49,7 @@ public class OutlayFilterResponse extends AppCompatActivity {
         Intent i = getIntent();
         if (i.hasExtra(material_id)) {
             int m = i.getIntExtra(material_id, -1);
+            boolean isService = i.getBooleanExtra(Extra_IsService, false);
             outlayViewModel.getByMaterial(m).observe(this, fullOutlays -> {
                 adapter.submitList(fullOutlays);
                 adapter.notifyDataSetChanged();

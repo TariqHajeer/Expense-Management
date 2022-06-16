@@ -34,7 +34,9 @@
                     android:id="@+id/nav_material_report"
                     android:icon="@drawable/ic_baseline_add_shopping_cart_24"
                     android:title="By Material" />
-
+                <item android:id="@+id/nav_service_report"
+                    android:icon="@drawable/ic_baseline_add_shopping_cart_24"
+                    android:title="By Service"/>
             </menu>
         </item>
     </group>

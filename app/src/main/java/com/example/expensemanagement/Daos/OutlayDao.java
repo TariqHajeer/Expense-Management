@@ -9,6 +9,7 @@ import androidx.room.TypeConverters;
 import androidx.room.Update;
 
 import com.example.expensemanagement.DBViews.FullOutlay;
+import com.example.expensemanagement.DBViews.TotalView;
 import com.example.expensemanagement.Domain.Outlay;
 import com.example.expensemanagement.Helper.DateConverter;
 
@@ -42,15 +43,16 @@ public interface OutlayDao {
     @Query("Select * from FullOutlay where material_id=:material_id ")
     LiveData<List<FullOutlay>> getByMaterial(int material_id);
 
-    @Query("Select * from FullOutlay where outlayOwner_id =:ower_id ")
-    LiveData<List<FullOutlay>> getByOwner(int ower_id);
-
-
+    @Query("Select * from FullOutlay where outlayOwner_id =:owner_id ")
+    LiveData<List<FullOutlay>> getByOwner(int owner_id);
 
     @Query("Select sum(price) from FullOutlay where material_id =:material_id")
     double sumByMaterial(int material_id);
 
     @Query("Select sum(price) from FullOutlay where outlayOwner_id =:owner_id")
     double sumByOwner(int owner_id);
+
+    @Query("Select * from TotalView where isService=:isService")
+    LiveData<List<TotalView>> getTotal(boolean isService);
 
 }

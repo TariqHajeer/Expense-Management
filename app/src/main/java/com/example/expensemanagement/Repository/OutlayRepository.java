@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.lifecycle.LiveData;
 
 import com.example.expensemanagement.DBViews.FullOutlay;
+import com.example.expensemanagement.DBViews.TotalView;
 import com.example.expensemanagement.Daos.OutlayDao;
 import com.example.expensemanagement.Database.ExpenseManagementDatabase;
 import com.example.expensemanagement.Domain.Outlay;
@@ -73,6 +74,10 @@ public class OutlayRepository {
         ExpenseManagementDatabase.databaseWriteExecutor.execute(() -> {
             callback.invoke(outlayDao.sumByOwner(owner_id));
         });
+    }
+
+    public LiveData<List<TotalView>> getTotal(boolean isService) {
+        return outlayDao.getTotal(isService);
     }
 
     public LiveData<List<FullOutlay>> getByMaterial(int material_id) {
