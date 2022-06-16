@@ -37,11 +37,12 @@ public class DateReportFragment extends Fragment {
     private OutlayViewModel outlayViewModel;
     private Date from = null;
     private Date to = null;
+    private DateFormat dateFormat;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentDateReportBinding.inflate(inflater, container, false);
-
+        dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         outlayViewModel = new ViewModelProvider(this).get(OutlayViewModel.class);
         View root = binding.getRoot();
         month_spinner = binding.monthsSpinner;
@@ -65,7 +66,6 @@ public class DateReportFragment extends Fragment {
                 int year = Integer.parseInt(_year);
                 int selectedMonth = month_spinner.getSelectedItemPosition();
 
-                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 if (selectedMonth == 0) {
                     String _from = year + "-01" + "-01";
                     String _to = year + "-12" + "-31";
@@ -113,8 +113,10 @@ public class DateReportFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(view.getContext(), OutlayFilterResponse.class);
-                i.putExtra(OutlayFilterResponse.fromDate, from);
-                i.putExtra(OutlayFilterResponse.toDate, to);
+                String _from = dateFormat.format(from);
+                String _to = dateFormat.format(to);
+                i.putExtra(OutlayFilterResponse.fromDate, _from);
+                i.putExtra(OutlayFilterResponse.toDate, _to);
                 startActivity(i);
             }
         });
