@@ -3,15 +3,22 @@ package com.example.expensemanagement.Helper;
 
 import androidx.room.TypeConverter;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DateConverter {
     @TypeConverter
-    public static Date toDate(Long m){
-        return  m==null?null:new Date(m);
+    public static Date toDate(String m) throws ParseException {
+        DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+        return dateFormat.parse(m);
+
     }
+
     @TypeConverter
-    public  static Long fromDate(Date date){
-        return  date==null?null:date.getTime();
+    public static String fromDate(Date date) {
+        DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+        return dateFormat.format(date);
     }
 }

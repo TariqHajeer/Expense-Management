@@ -11,6 +11,7 @@ import com.example.expensemanagement.Domain.Outlay;
 import com.example.expensemanagement.Helper.Callback;
 
 
+import java.util.Date;
 import java.util.List;
 
 public class OutlayRepository {
@@ -32,21 +33,41 @@ public class OutlayRepository {
             outlayDao.insert(outlay);
         });
     }
+
     public LiveData<Outlay> getById(int id) {
         return outlayDao.getById(id);
     }
 
     public void update(Outlay outlay) {
-        ExpenseManagementDatabase.databaseWriteExecutor.execute(()->{
+        ExpenseManagementDatabase.databaseWriteExecutor.execute(() -> {
             outlayDao.update(outlay);
         });
 
     }
 
     public void delete(Outlay outlay) {
-        ExpenseManagementDatabase.databaseWriteExecutor.execute(()->{
+        ExpenseManagementDatabase.databaseWriteExecutor.execute(() -> {
             outlayDao.delete(outlay);
         });
+    }
 
+    public void sumDateFilter(Date from, Date to, Callback<Double> callback) {
+        ExpenseManagementDatabase.databaseWriteExecutor.execute(() -> {
+            double sum = outlayDao.sumDateFilter(from, to);
+            callback.invoke(sum);
+        });
+    }
+
+    public void sumByMaterial(int material_id, Callback<Double> callback) {
+        ExpenseManagementDatabase.databaseWriteExecutor.execute(() -> {
+            double sum = outlayDao.sumByMaterial(material_id);
+            callback.invoke(sum);
+        });
+    }
+
+    public void sumByOwner(int owner_id, Callback<Double> callback) {
+        ExpenseManagementDatabase.databaseWriteExecutor.execute(() -> {
+            callback.invoke(outlayDao.sumByOwner(owner_id));
+        });
     }
 }

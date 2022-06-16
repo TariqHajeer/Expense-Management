@@ -24,7 +24,7 @@ import com.example.expensemanagement.Domain.User;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Material.class, OutlayOwner.class, User.class, Outlay.class},views = {FullOutlay.class}, version = 5, exportSchema = true)
+@Database(entities = {Material.class, OutlayOwner.class, User.class, Outlay.class},views = {FullOutlay.class}, version = 1, exportSchema = true)
 public abstract class ExpenseManagementDatabase extends RoomDatabase {
     public abstract MaterialDao materialDao();
 
@@ -34,7 +34,7 @@ public abstract class ExpenseManagementDatabase extends RoomDatabase {
 
     public abstract OutlayDao outlayDao();
 
-    private static final String dbName = "temp2";
+    private static final String dbName = "temp4";
     /*
     volatile this word to force thread work in the original instance on the memory
      */
@@ -67,33 +67,22 @@ public abstract class ExpenseManagementDatabase extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-            materialSeed();
-            outlayOwnerSeed();
+            ExpenseManagementDatabase.databaseWriteExecutor.execute(()->{
+                MaterialDao mdao = INSTANCE.materialDao();
+                Material electricityBill = new Material("Electricity bill", null, true);
+                mdao.insert(electricityBill);
+                Material waterBill = new Material("Water bill", null, true);
+                mdao.insert(waterBill);
+                OutlayOwnerDao oodao = INSTANCE.outlayOwnerDao();
+                OutlayOwner me = new OutlayOwner("Me", null);
+                oodao.insert(me);
+
+                OutlayOwner myWife = new OutlayOwner("My wife", "don't give him a lot of money");
+                oodao.insert(myWife);
+            });
         }
     };
 
-    private static void outlayOwnerSeed() {
-        databaseWriteExecutor.execute(() -> {
 
-            OutlayOwnerDao dao = INSTANCE.outlayOwnerDao();
-            OutlayOwner me = new OutlayOwner("Me", null);
-            dao.insert(me);
-
-            OutlayOwner myWife = new OutlayOwner("My wife", "don't give him a lot of money");
-            dao.insert(myWife);
-        });
-    }
-
-    private static void materialSeed() {
-        databaseWriteExecutor.execute(() -> {
-            // Populate the database in the background.
-            // If you want to start with more words, just add them.
-            MaterialDao dao = INSTANCE.materialDao();
-            Material electricityBill = new Material("Electricity bill", null, true);
-            dao.insert(electricityBill);
-            Material waterBill = new Material("Water bill", null, true);
-            dao.insert(waterBill);
-        });
-    }
 
 }
