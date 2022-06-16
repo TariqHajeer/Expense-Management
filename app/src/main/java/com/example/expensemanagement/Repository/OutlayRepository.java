@@ -70,4 +70,11 @@ public class OutlayRepository {
             callback.invoke(outlayDao.sumByOwner(owner_id));
         });
     }
+
+    public LiveData<List<FullOutlay>> getByMaterial(int material_id) {
+        return outlayDao.getByMaterial(material_id);
+    }
+    public LiveData<List<FullOutlay>> getByOwner(int owner_id){
+        return  outlayDao.getByOwner(owner_id);
+    }
 }

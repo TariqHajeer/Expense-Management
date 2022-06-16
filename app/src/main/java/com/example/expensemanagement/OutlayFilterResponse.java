@@ -1,6 +1,10 @@
 package com.example.expensemanagement;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,23 +14,55 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 
+import com.example.expensemanagement.Adapters.OutlayListAdapter;
+import com.example.expensemanagement.Adapters.OutlayOwnerListAdapter;
+import com.example.expensemanagement.DBViews.FullOutlay;
+import com.example.expensemanagement.ViewModels.OutlayViewModel;
+
 import java.util.Date;
+import java.util.List;
 
 public class OutlayFilterResponse extends AppCompatActivity {
-    public final static String reportType = "OutlayFilterResponse.type";
     public final static String fromDate = "OutlayFilterResponse.fromDate";
     public final static String toDate = "OutlayFilterResponse.toDate";
     public final static String material_id = "OutlayFilterResponse.material_id";
     public final static String owner_id = "OutlayFilterResponse.owner_id";
-    private Button date_report_search_btn = findViewById(R.id.date_report_search_btn);
-    private Button date_report_view_details_btn = findViewById(R.id.date_report_view_details_btn);
-    private Spinner months_spinner = findViewById(R.id.months_spinner);
-    private EditText date_report_year_text_view = findViewById(R.id.date_report_year_text_view);
-
+    private OutlayListAdapter adapter;
+    private OutlayViewModel outlayViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_outlay_filter_response);
+        outlayViewModel = ViewModelProviders.of(this).get(OutlayViewModel.class);
+        RecyclerView recyclerView = findViewById(R.id.report_outlay_recycler_view);
+        adapter = new OutlayListAdapter(new OutlayListAdapter.OutlayDiff());
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        getOutlayByFilter();
+    }
+
+    private void getOutlayByFilter() {
+        Intent i = getIntent();
+        if (i.hasExtra(material_id)) {
+            int m = i.getIntExtra(material_id, -1);
+            outlayViewModel.getByMaterial(m).observe(this, fullOutlays -> {
+                adapter.submitList(fullOutlays);
+                adapter.notifyDataSetChanged();
+            });
+            return;
+        }
+        if (i.hasExtra(owner_id)) {
+            int m = i.getIntExtra(owner_id, -1);
+            outlayViewModel.getByOwner(m).observe(this, fullOutlays -> {
+                adapter.submitList(fullOutlays);
+                adapter.notifyDataSetChanged();
+            });
+            return;
+        }
+        if (i.hasExtra(fromDate) && i.hasExtra(toDate)) {
+
+        }
+
     }
 }

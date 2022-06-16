@@ -1,5 +1,6 @@
 package com.example.expensemanagement.ui.Reports;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.expensemanagement.Domain.Outlay;
 import com.example.expensemanagement.Domain.OutlayOwner;
 import com.example.expensemanagement.Helper.Callback;
+import com.example.expensemanagement.OutlayFilterResponse;
 import com.example.expensemanagement.ViewHolders.OutlayViewHolder;
 import com.example.expensemanagement.ViewModels.OutlayOwnerViewModel;
 import com.example.expensemanagement.ViewModels.OutlayViewModel;
@@ -32,6 +34,8 @@ public class OwnerReportFragment extends Fragment {
     private TextView owner_report_sum_label;
     private TextView owner_report_sum_text_view;
     private Button date_report_view_details_btn;
+
+    private int owner_id;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -54,12 +58,21 @@ public class OwnerReportFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 OutlayOwner owner = (OutlayOwner) owner_spinner.getSelectedItem();
+                owner_id = owner.getId();
                 setPrice(owner);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
+            }
+        });
+        date_report_view_details_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), OutlayFilterResponse.class);
+                i.putExtra(OutlayFilterResponse.owner_id, owner_id);
+                startActivity(i);
             }
         });
         return root;

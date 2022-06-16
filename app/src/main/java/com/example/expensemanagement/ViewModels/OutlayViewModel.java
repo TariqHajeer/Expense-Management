@@ -57,4 +57,10 @@ public class OutlayViewModel extends AndroidViewModel {
     public void sumByOwner(int owner_id, Callback<Double> callback) {
         repository.sumByOwner(owner_id, callback);
     }
+    public LiveData<List<FullOutlay>> getByMaterial(int material_id){
+        return  repository.getByMaterial(material_id);
+    }
+    public LiveData<List<FullOutlay>> getByOwner(int owner_id){
+        return repository.getByOwner(owner_id);
+    }
 }

@@ -20,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.expensemanagement.Domain.Material;
 import com.example.expensemanagement.Helper.Callback;
+import com.example.expensemanagement.OutlayFilterResponse;
 import com.example.expensemanagement.ViewModels.MaterialViewModel;
 import com.example.expensemanagement.ViewModels.OutlayViewModel;
 import com.example.expensemanagement.databinding.FragmentMaterialReportBinding;
@@ -33,14 +34,16 @@ public class MaterialReportFragment extends Fragment {
     private MaterialViewModel materialViewModel;
     private OutlayViewModel outlayViewModel;
     private TextView material_report_sum_label;
-    private  TextView material_report_sum_text_view;
+    private TextView material_report_sum_text_view;
     private Button date_report_view_details_btn;
+    private int material_id;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentMaterialReportBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         material_spinner = binding.reportMaterialSpinner;
-        material_report_sum_label= binding.materialReportSumLabel;
+        material_report_sum_label = binding.materialReportSumLabel;
         material_report_sum_text_view = binding.materialReportSumTextView;
         date_report_view_details_btn = binding.dateReportViewDetailsBtn;
         materialViewModel = new ViewModelProvider(this).get(MaterialViewModel.class);
@@ -58,6 +61,7 @@ public class MaterialReportFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Material material = (Material) material_spinner.getSelectedItem();
+                material_id = material.getId();
                 setPrice(material);
             }
 
@@ -66,7 +70,14 @@ public class MaterialReportFragment extends Fragment {
 
             }
         });
-
+        date_report_view_details_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), OutlayFilterResponse.class);
+                i.putExtra(OutlayFilterResponse.material_id, material_id);
+                startActivity(i);
+            }
+        });
         return root;
     }
 
