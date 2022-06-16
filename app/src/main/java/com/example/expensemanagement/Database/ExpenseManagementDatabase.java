@@ -40,7 +40,7 @@ public abstract class ExpenseManagementDatabase extends RoomDatabase {
 
     public abstract OutlayDao outlayDao();
 
-    private static final String dbName = "temp10";
+    private static final String dbName = "temp13";
     /*
     volatile this word to force thread work in the original instance on the memory
      */
@@ -95,32 +95,32 @@ public abstract class ExpenseManagementDatabase extends RoomDatabase {
 
                 OutlayOwner myWife = new OutlayOwner("My wife", "don't give him a lot of money");
                 oodao.insert(myWife);
-                int day = 1;
-                int month = 1;
-                Date date = null;
-                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                String _date;
-                for (Material m : materials) {
-                    _date = "2022" + "-" + month + "-" + day;
-                    try {
-                        date = dateFormat.parse(_date);
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                    Outlay outlay = new Outlay(m.getId(), me.getId(), 100, _date, date);
-                    outlayDao.insert(outlay);
-                    day++;
-                    _date = "2022" + "-" + month + "-" + day;
-                    try {
-                        date = dateFormat.parse(_date);
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                    outlay =new Outlay(m.getId(), myWife.getId(), 100, _date, date);
-                    outlayDao.insert(outlay);
-                    month++;
-                    day=1;
-                }
+//                int day = 1;
+//                int month = 1;
+//                Date date = null;
+//                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//                String _date;
+//                for (Material m : materials) {
+//                    _date = "2022" + "-" + month + "-" + day;
+//                    try {
+//                        date = dateFormat.parse(_date);
+//                    } catch (ParseException e) {
+//                        e.printStackTrace();
+//                    }
+//                    Outlay outlay = new Outlay(m.getId(), me.getId(), 100, _date, date);
+//                    outlayDao.insert(outlay);
+//                    day++;
+//                    _date = "2022" + "-" + month + "-" + day;
+//                    try {
+//                        date = dateFormat.parse(_date);
+//                    } catch (ParseException e) {
+//                        e.printStackTrace();
+//                    }
+//                    outlay =new Outlay(m.getId(), myWife.getId(), 100, _date, date);
+//                    outlayDao.insert(outlay);
+//                    month++;
+//                    day=1;
+//                }
             });
         }
     };
