@@ -52,6 +52,14 @@ public class MaterialReportFragment extends Fragment {
             adapter.submitList(totalViews);
             adapter.notifyDataSetChanged();
         });
+        adapter.callback =new Callback<TotalView>() {
+            @Override
+            public void invoke(TotalView obj) {
+                Intent i =new Intent(getActivity(),OutlayFilterResponse.class);
+                i.putExtra(OutlayFilterResponse.material_id,obj.getMaterial_id());
+                startActivity(i);
+            }
+        };
         return root;
     }
     @Override
