@@ -6,7 +6,7 @@
     tools:context=".ui.Reports.ServiceReportFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/material_report_RecyclerView"
+        android:id="@+id/service_report_RecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="205dp"

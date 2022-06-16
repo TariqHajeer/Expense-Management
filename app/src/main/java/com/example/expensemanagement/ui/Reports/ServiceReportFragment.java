@@ -28,7 +28,7 @@ public class ServiceReportFragment extends Fragment {
 
         binding = FragmentServiceReportBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        RecyclerView recyclerView = binding.materialReportRecyclerView;
+        RecyclerView recyclerView = binding.serviceReportRecyclerView;
         outlayViewModel = new ViewModelProvider(this).get(OutlayViewModel.class);
         TotalViewAdapter adapter = new TotalViewAdapter(new TotalViewAdapter.TotalViewDiff());
         recyclerView.setAdapter(adapter);
