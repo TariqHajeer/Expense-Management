@@ -34,7 +34,9 @@ public class OutlayViewModel extends AndroidViewModel {
     public void update(Outlay outlay) {
         repository.update(outlay);
     }
-
+    public void  deleteById(int id ){
+        repository.deleteById(id);
+    }
     public LiveData<Outlay> getById(int id) {
         return repository.getById(id);
     }

@@ -32,7 +32,10 @@ public interface OutlayDao {
     LiveData<List<FullOutlay>> getAll();
 
     @Query("Select * from Outlay where id=:id")
-    LiveData<Outlay> getById(int id);
+    Outlay getById(int id);
+
+    @Query("Select * from Outlay where id=:id")
+    LiveData<Outlay> getByIdLive(int id);
 
     @Query("Select * from FullOutlay where date >= :from and date <= :to ")
     LiveData<List<FullOutlay>> getDateFilter(Date from, Date to);

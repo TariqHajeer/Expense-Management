@@ -17,14 +17,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.expensemanagement.Adapters.OutlayListAdapter;
 import com.example.expensemanagement.CreateOrUpdateOutlayActivity;
+import com.example.expensemanagement.DBViews.FullOutlay;
 import com.example.expensemanagement.Domain.Outlay;
 import com.example.expensemanagement.ViewModels.OutlayViewModel;
 import com.example.expensemanagement.databinding.FragmentOutlayBinding;
 import com.example.expensemanagement.databinding.FragmentOutlayOwnerBinding;
 
+import java.util.List;
+
 public class OutlayFragment extends Fragment {
     private FragmentOutlayBinding binding;
     private OutlayViewModel outlayViewModel;
+    private List<FullOutlay> fullOutlays;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -52,7 +56,8 @@ public class OutlayFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         outlayViewModel.getAll().observe(getActivity(), outlays -> {
-            adapter.submitList(outlays);
+            fullOutlays = outlays;
+            adapter.submitList(fullOutlays);
         });
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             @Override
@@ -63,15 +68,11 @@ public class OutlayFragment extends Fragment {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAbsoluteAdapterPosition();
-                int id = adapter.getId(position);
-                outlayViewModel.getById(id).observe(getActivity(), outlay -> {
-                    outlayViewModel.delete(outlay);
-                    outlayViewModel.getAll().observe(getActivity(),outlays->{
-                        adapter.submitList(outlays);
-                        adapter.notifyDataSetChanged();
 
-                    });
-                });
+                FullOutlay deleted = adapter.getItemByPosition(position);
+                fullOutlays.remove(deleted);
+                adapter.notifyDataSetChanged();
+                outlayViewModel.deleteById(deleted.getId());
 
             }
         }).attachToRecyclerView(recyclerView);

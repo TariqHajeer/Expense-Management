@@ -36,7 +36,7 @@ public class OutlayRepository {
     }
 
     public LiveData<Outlay> getById(int id) {
-        return outlayDao.getById(id);
+        return outlayDao.getByIdLive(id);
     }
 
     public void update(Outlay outlay) {
@@ -44,6 +44,12 @@ public class OutlayRepository {
             outlayDao.update(outlay);
         });
 
+    }
+
+    public void deleteById(int id) {
+        ExpenseManagementDatabase.databaseWriteExecutor.execute(() -> {
+            outlayDao.delete(outlayDao.getById(id));
+        });
     }
 
     public void delete(Outlay outlay) {

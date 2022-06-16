@@ -28,7 +28,9 @@ public class OutlayListAdapter extends ListAdapter<FullOutlay, OutlayViewHolder>
     public OutlayViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return OutlayViewHolder.create(parent);
     }
-
+    public FullOutlay getItemByPosition(int position){
+        return getItem(position);
+    }
     public  int getId(int position){
         return getItem(position).getId();
     }
