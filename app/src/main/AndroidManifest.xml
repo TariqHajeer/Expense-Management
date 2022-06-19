@@ -19,9 +19,6 @@
             android:name=".CreateOrUpdateOutlayOwnerActivity"
             android:exported="false" />
         <activity
-            android:name=".ViewModels.CreateOrUpdateOutlayOwnerActivity"
-            android:exported="false" />
-        <activity
             android:name=".CreateOrUpdateMaterialActivity"
             android:exported="false" />
         <activity
