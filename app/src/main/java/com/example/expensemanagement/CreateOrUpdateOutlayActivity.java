@@ -159,7 +159,10 @@ public class CreateOrUpdateOutlayActivity extends AppCompatActivity {
     public Outlay bind() throws ParseException {
         Material selectedMaterial = (Material) material_spinner.getSelectedItem();
         OutlayOwner outlayOwner = (OutlayOwner) owner_spinner.getSelectedItem();
-        double price = Double.parseDouble(priceTxt.getText().toString());
+        String priceAsText = priceTxt.getText().toString();
+        if (priceAsText.isEmpty())
+            priceAsText = "0";
+        double price = Double.parseDouble(priceAsText);
         String des = descTxt.getText().toString();
         Date date = getDate();
         Outlay outlay = new Outlay(selectedMaterial.getId(), outlayOwner.getId(), price, des, date);
