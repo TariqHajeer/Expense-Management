@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="10dp"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingTop="10pt">
+
+        <ImageView
+            android:id="@+id/material_name_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_baseline_add_shopping_cart_24" />
+
+        <TextView
+            android:id="@+id/outlay_material_name_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@+id/material_name_icon"
+            android:maxLines="1"
+            android:text="name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <ImageView
+
+
+            android:id="@+id/outlay_owner_name_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/material_name_icon"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_baseline_person_24" />
+
+        <TextView
+            android:id="@+id/outlay_owner_name_TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/outlay_material_name_text_view"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@+id/outlay_owner_name_icon"
+            android:maxLines="1"
+            android:text="hamddeeeeeeee"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <ImageView
+            android:id="@+id/outlay_price_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/outlay_owner_name_icon"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_baseline_monetization_on_24" />
+
+        <TextView
+            android:id="@+id/outlay_price_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/outlay_owner_name_TextView"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@+id/outlay_price_icon"
+            android:maxLines="1"
+            android:text="hamdeeeeeeeeeeeeee"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <ImageView
+            android:id="@+id/outlay_date_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/outlay_price_icon"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_baseline_date_range_24" />
+
+        <TextView
+            android:id="@+id/outlay_date_Text_View"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/outlay_price_text_view"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@+id/outlay_date_icon"
+            android:maxLines="1"
+            android:text="Hamdeeeeeeeexxxxxxxxxxeeeasdasdasde"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+

@@ -5,6 +5,7 @@ import androidx.core.view.ViewCompat;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -52,7 +53,9 @@ public class Login extends AppCompatActivity {
         String originalUsername = u.getUserName();
         String originalPassword = u.getPassword();
         if (originalPassword.compareTo(password) == 0 && originalUsername.compareTo(userName) == 0) {
-            Toast.makeText(this, "Login", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(this,DrawerActivity.class);
+            startActivity(i);
+            finish();
             //go to login
         } else {
             ViewCompat.setBackgroundTintList(userNameTxt, ColorStateList.valueOf(Color.RED));

@@ -56,4 +56,9 @@ public class Material {
     public boolean getIsService() {
         return isService;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

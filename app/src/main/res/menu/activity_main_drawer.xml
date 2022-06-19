@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_material"
+            android:icon="@drawable/ic_baseline_add_shopping_cart_24"
+            android:title="material" />
+        <item
+            android:id="@+id/nav_outlay_owner"
+            android:icon="@drawable/ic_baseline_person_24"
+            android:title="Outlay owner" />
+        <item
+            android:id="@+id/nav_outlay"
+            android:icon="@drawable/ic_baseline_monetization_on_24"
+            android:title="outlay" />
+        <item
+            android:id="@+id/nav_reports"
+            android:icon="@drawable/ic_baseline_file_copy_24"
+            android:title="reports">
+            <menu>
+                <item
+                    android:id="@+id/nav_date_report"
+                    android:icon="@drawable/ic_baseline_date_range_24"
+                    android:title="By Date" />
+                <item
+                    android:id="@+id/nav_owner_report"
+                    android:icon="@drawable/ic_baseline_person_24"
+                    android:title="By Owner" />
+                <item
+                    android:id="@+id/nav_material_report"
+                    android:icon="@drawable/ic_baseline_add_shopping_cart_24"
+                    android:title="By Material" />
+                <item android:id="@+id/nav_service_report"
+                    android:icon="@drawable/ic_baseline_add_shopping_cart_24"
+                    android:title="By Service"/>
+            </menu>
+        </item>
+    </group>
+</menu>

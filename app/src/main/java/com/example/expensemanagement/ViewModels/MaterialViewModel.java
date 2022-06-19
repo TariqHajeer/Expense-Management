@@ -39,11 +39,11 @@ public class MaterialViewModel extends AndroidViewModel {
         materialRepository.update(material);
     }
 
+    public int count(@NonNull String name, @NonNull int id) throws ExecutionException, InterruptedException {
+        return materialRepository.count(name, id);
+    }
+
     public int count(@NonNull String name) throws ExecutionException, InterruptedException {
-        try {
-            return materialRepository.count(name);
-        } catch (InterruptedException | ExecutionException ex) {
-            throw ex;
-        }
+        return materialRepository.count(name);
     }
 }
