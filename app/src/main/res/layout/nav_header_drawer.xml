@@ -14,6 +14,7 @@
 
     <ImageView
         android:id="@+id/imageView"
+<<<<<<< HEAD
         android:layout_width="91dp"
         android:layout_height="79dp"
         android:contentDescription="@string/nav_header_desc"
@@ -29,5 +30,20 @@
         android:textSize="15sp"
         android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+=======
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/imag" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:text="Expanse Management"
+        android:textSize="15dp"
+        android:textStyle="bold"/>
+
+>>>>>>> 8ea48df892d6f81f55d8402dd1f050d032927916
 
 </LinearLayout>
