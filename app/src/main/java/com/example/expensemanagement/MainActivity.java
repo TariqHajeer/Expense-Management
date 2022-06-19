@@ -33,6 +33,6 @@ public class MainActivity extends AppCompatActivity {
             i = new Intent(this, Login.class);
         }
         startActivity(i);
-
+        finish();
     }
 }
