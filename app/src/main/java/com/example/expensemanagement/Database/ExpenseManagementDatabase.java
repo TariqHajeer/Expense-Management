@@ -33,7 +33,7 @@ public abstract class ExpenseManagementDatabase extends RoomDatabase {
 
     public abstract OutlayDao outlayDao();
 
-    private static final String dbName = "temp18";
+    private static final String dbName = "ExpenseManagementDatabaseDeploy";
     /*
     volatile this word to force thread work in the original instance on the memory
      */
