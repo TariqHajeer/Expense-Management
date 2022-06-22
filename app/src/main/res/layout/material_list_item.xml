@@ -29,8 +29,8 @@
             android:layout_below="@id/material_name_text_view"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:text="name"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:text="desc"
+            android:textAppearance="@style /TextAppearance.AppCompat.Large" />
 
         <Switch
             android:id="@+id/material_is_service"

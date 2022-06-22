@@ -83,7 +83,6 @@ public class CreateOrUpdateMaterialActivity extends AppCompatActivity {
         boolean service = material_service_edit_switch.isChecked();
         Material material = new Material(name, desc, service);
         if (isUpdate) {
-
             material.setId(id);
         }
         return material;

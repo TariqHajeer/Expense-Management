@@ -1,19 +1,16 @@
 package com.example.expensemanagement.ViewHolders;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.expensemanagement.Domain.Material;
 import com.example.expensemanagement.R;
-import com.example.expensemanagement.ViewModels.MaterialViewModel;
 
 public class MaterialViewHolder extends RecyclerView.ViewHolder {
     private final TextView name;

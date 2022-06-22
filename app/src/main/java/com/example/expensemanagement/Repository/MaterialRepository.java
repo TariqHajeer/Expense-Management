@@ -20,6 +20,7 @@ public class MaterialRepository {
     private LiveData<List<Material>> materials;
 
     public MaterialRepository(Application application) {
+        //الحصول على نسخة من قاعدة البيانات
         ExpenseManagementDatabase db = ExpenseManagementDatabase.getDatabase(application);
         materialDao = db.materialDao();
         materials = materialDao.getAll();

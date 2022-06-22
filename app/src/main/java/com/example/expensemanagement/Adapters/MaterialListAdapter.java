@@ -32,7 +32,7 @@ public class MaterialListAdapter extends ListAdapter<Material, MaterialViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull MaterialViewHolder holder, int position) {
-        Material current = getItem(position);
+        Material current    = getItem(position);
         holder.bind(current);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -18,7 +18,6 @@ import com.example.expensemanagement.ViewModels.UserViewModel;
 public class MainActivity extends AppCompatActivity {
 
     private UserViewModel userViewModel;
-    private MaterialViewModel materialViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
