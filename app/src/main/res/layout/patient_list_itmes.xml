@@ -14,22 +14,25 @@
         android:layout_height="wrap_content"
         >
         <TextView
-            android:id="@+id/caringType_name_text_view"
+            android:id="@+id/patient_name_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="name"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-        <TextView
-            android:id="@+id/caringType_description_text_view"
-            android:layout_width="match_parent"
+        <Switch
+            android:id="@+id/patient_is_stopped"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/caringType_name_text_view"
+            android:layout_below="@id/patient_name_text_view"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:text="desc"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:checked="true"
+            android:enabled="false"
+            android:text="Service"
+            android:thumb="@drawable/sw_thumb"
+            android:track="@drawable/sw_track" />
 
     </RelativeLayout>
 

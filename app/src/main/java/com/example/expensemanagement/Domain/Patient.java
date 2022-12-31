@@ -8,15 +8,15 @@ import androidx.room.PrimaryKey;
 import org.jetbrains.annotations.NotNull;
 
 @Entity(indices = {@Index(value = {"name"}, unique = true)})
-public class CaringType {
+public class Patient {
     @PrimaryKey(autoGenerate = true)
     private  int id;
     @NotNull
     private  String name;
-    private  String description;
-    public  CaringType(String name ,String description){
+    private  boolean isStopped;
+    public  Patient(String name ,boolean isStopped){
         this.setName(name);
-        this.setDescription(description);
+        this.setStopped(isStopped);
     }
     @NotNull
     public int getId() {
@@ -36,19 +36,16 @@ public class CaringType {
         this.name = name.trim();
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        if(description!=null)
-            this.description = description.trim();
-    }
-
     @Override
     public String toString() {
         return  this.name.trim();
     }
 
+    public boolean isStopped() {
+        return isStopped;
+    }
 
+    public void setStopped(boolean stopped) {
+        isStopped = stopped;
+    }
 }

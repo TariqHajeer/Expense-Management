@@ -14,19 +14,19 @@ import com.example.expensemanagement.R;
 public class CaringTypeViewHolder  extends RecyclerView.ViewHolder{
     private TextView name;
     private  TextView description;
-    public CaringTypeViewHolder(@NonNull View itemView) {
+    private CaringTypeViewHolder(@NonNull View itemView) {
         super(itemView);
         name =itemView.findViewById(R.id.caringType_name_text_view);
-        description = itemView.findViewById(R.id.caringType_description_text_view);
+        description = itemView.findViewById(R.id.patient_is_stopped);
     }
-    public void bind(CaringType data){
+    public void bind(@NonNull CaringType data){
         name.setText(data.getName());
         description.setText(data.getDescription());
 
     }
     public static CaringTypeViewHolder Create(ViewGroup parent){
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.caringtype_list_itmes, parent, false);
+                .inflate(R.layout.caringtype_list_items, parent, false);
         return new CaringTypeViewHolder(view);
     }
 }

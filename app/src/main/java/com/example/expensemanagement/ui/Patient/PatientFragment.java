@@ -1,4 +1,4 @@
-package com.example.expensemanagement.ui.caringType;
+package com.example.expensemanagement.ui.Patient;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,7 +20,7 @@ import com.example.expensemanagement.Helper.Callback;
 import com.example.expensemanagement.ViewModels.CaringTypeViewModel;
 import com.example.expensemanagement.databinding.FragmentCaringtypeBinding;
 
-public class CaringTypeFragment extends Fragment {
+public class PatientFragment  extends Fragment {
     private FragmentCaringtypeBinding binding;
     private CaringTypeViewModel viewModel;
 
@@ -39,7 +39,7 @@ public class CaringTypeFragment extends Fragment {
         adapter.caringTypeOnClickListener= new Callback<CaringType>() {
             @Override
             public void invoke(CaringType obj) {
-                Intent i =new Intent(getActivity(),CreateOrUpdateCaringType.class);
+                Intent i =new Intent(getActivity(), CreateOrUpdateCaringType.class);
                 i.putExtra(CreateOrUpdateCaringType.Extra_Id,obj.getId());
                 i.putExtra(CreateOrUpdateCaringType.Extra_Name,obj.getName());
                 i.putExtra(CreateOrUpdateCaringType.Extra_Desc,obj.getDescription());
@@ -74,4 +74,5 @@ public class CaringTypeFragment extends Fragment {
         return  root;
 
     }
+
 }

@@ -11,6 +11,7 @@ import com.example.expensemanagement.Daos.CaringTypeDao;
 import com.example.expensemanagement.Daos.MaterialDao;
 import com.example.expensemanagement.Daos.OutlayDao;
 import com.example.expensemanagement.Daos.OutlayOwnerDao;
+import com.example.expensemanagement.Daos.PatientDao;
 import com.example.expensemanagement.Domain.CaringType;
 import com.example.expensemanagement.Domain.Material;
 import com.example.expensemanagement.Domain.OutlayOwner;
@@ -24,6 +25,7 @@ import java.util.concurrent.Executors;
 public abstract class Database extends RoomDatabase {
 
     public abstract CaringTypeDao CaringTypeDao();
+    public abstract PatientDao PatientDao();
     private static final String dbName = "database1";
     /*
     volatile this word to force thread work in the original instance on the memory

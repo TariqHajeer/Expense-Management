@@ -7,24 +7,25 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.expensemanagement.Domain.CaringType;
+
+import com.example.expensemanagement.Domain.Patient;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 @Dao
-public interface CaringTypeDao {
+public interface PatientDao {
     @Insert
-    void  Insert(CaringType caringType);
+    void  Insert(Patient patient);
     @Update
-    void  Update (CaringType caringType);
+    void  Update (Patient patient);
     @Delete
-    void  Delete(CaringType caringType);
+    void  Delete(Patient patient);
     @Query("Select * from CaringType")
-    LiveData<List<CaringType>> GetAll();
-    @Query("Select Count(*) from CaringType where name=:name")
+    LiveData<List<Patient>> GetAll();
+    @Query("Select Count(*) from Patient where name=:name")
     int Count(@NotNull String name );
-    @Query("Select Count(*) from CaringType where name=:name and id !=:id")
+    @Query("Select Count(*) from Patient where name=:name and id !=:id")
     int Count(@NotNull int id ,@NotNull String name );
 }
