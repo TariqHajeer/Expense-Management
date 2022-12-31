@@ -23,14 +23,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
-        Intent i;
-        if (!userViewModel.userExist) {
-            i = new Intent(this, WelcomeActivity.class);
-
-        } else {
-            i = new Intent(this, Login.class);
-        }
+//        userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
+//        Intent i;
+//        if (!userViewModel.userExist) {
+//            i = new Intent(this, WelcomeActivity.class);
+//
+//        } else {
+//            i = new Intent(this, Login.class);
+//        }
+        Intent i = new Intent(this,DrawerActivity.class);
         startActivity(i);
         finish();
     }

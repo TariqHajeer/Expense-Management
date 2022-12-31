@@ -6,6 +6,10 @@
     <group android:checkableBehavior="single">
 
         <item
+            android:id="@+id/nav_caringType"
+            android:icon="@drawable/ic_baseline_add_shopping_cart_24"
+            android:title="Caring type" />
+        <item
             android:id="@+id/nav_material"
             android:icon="@drawable/ic_baseline_add_shopping_cart_24"
             android:title="material" />
