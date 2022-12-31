@@ -10,6 +10,12 @@
         android:supportsRtl="false"
         android:theme="@style/Theme.ExpenseManagement">
         <activity
+            android:name=".CreateOrUpdatePatient"
+            android:exported="false" />
+        <activity
+            android:name=".CreateOrUpdateCaringType"
+            android:exported="false" />
+        <activity
             android:name=".OutlayFilterResponse"
             android:exported="false" />
         <activity
