@@ -14,35 +14,39 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.expensemanagement.Adapters.CaringTypeListAdapter;
+import com.example.expensemanagement.Adapters.PatientAdapter;
 import com.example.expensemanagement.CreateOrUpdateCaringType;
+import com.example.expensemanagement.CreateOrUpdatePatient;
 import com.example.expensemanagement.Domain.CaringType;
+import com.example.expensemanagement.Domain.Patient;
 import com.example.expensemanagement.Helper.Callback;
 import com.example.expensemanagement.ViewModels.CaringTypeViewModel;
+import com.example.expensemanagement.ViewModels.PatientViewModel;
 import com.example.expensemanagement.databinding.FragmentCaringtypeBinding;
+import com.example.expensemanagement.databinding.FragmentPatientBinding;
 
 public class PatientFragment  extends Fragment {
-    private FragmentCaringtypeBinding binding;
-    private CaringTypeViewModel viewModel;
+    private FragmentPatientBinding binding;
+    private PatientViewModel viewModel;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentCaringtypeBinding.inflate(inflater, container, false);
-        viewModel= new ViewModelProvider(this).get(CaringTypeViewModel.class);
+        binding = FragmentPatientBinding.inflate(inflater, container, false);
+        viewModel= new ViewModelProvider(this).get(PatientViewModel.class);
 
         View root = binding.getRoot();
 
-        RecyclerView recyclerView = binding.caringTypeRecyclerView;
+        RecyclerView recyclerView = binding.patientRecyclerView;
 
 
-        final CaringTypeListAdapter adapter = new CaringTypeListAdapter(new CaringTypeListAdapter.CaringTypeDiff());
-        adapter.caringTypeOnClickListener= new Callback<CaringType>() {
+        final PatientAdapter adapter = new PatientAdapter(new PatientAdapter.PatientDiff());
+        adapter.callback= new Callback<Patient>() {
             @Override
-            public void invoke(CaringType obj) {
-                Intent i =new Intent(getActivity(), CreateOrUpdateCaringType.class);
-                i.putExtra(CreateOrUpdateCaringType.Extra_Id,obj.getId());
-                i.putExtra(CreateOrUpdateCaringType.Extra_Name,obj.getName());
-                i.putExtra(CreateOrUpdateCaringType.Extra_Desc,obj.getDescription());
+            public void invoke(Patient obj) {
+                Intent i =new Intent(getActivity(), CreateOrUpdatePatient.class);
+                i.putExtra(CreateOrUpdatePatient.Extra_Id,obj.getId());
+                i.putExtra(CreateOrUpdatePatient.Extra_Name,obj.getName());
                 startActivity(i);
             }
         };
@@ -51,10 +55,10 @@ public class PatientFragment  extends Fragment {
         viewModel.GetData().observe(this,data->{
             adapter.submitList(data);
         });
-        binding.addCaringtypeFabButton.setOnClickListener(new View.OnClickListener() {
+        binding.addPatientFabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i =new Intent(view.getContext(), CreateOrUpdateCaringType.class);
+                Intent i =new Intent(view.getContext(), CreateOrUpdatePatient.class);
                 startActivity(i);
             }
         });
@@ -67,8 +71,8 @@ public class PatientFragment  extends Fragment {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 int position= viewHolder.getAbsoluteAdapterPosition();
-                CaringType caringType= adapter.getItemAt(position);
-                viewModel.Delete(caringType);
+                Patient data= adapter.getItemAt(position);
+                viewModel.Delete(data);
             }
         }).attachToRecyclerView(recyclerView);
         return  root;

@@ -16,7 +16,8 @@ public class PatientViewHolder extends RecyclerView.ViewHolder {
     private Switch isStopped;
     private PatientViewHolder(@NonNull View itemView) {
         super(itemView);
-
+        name=itemView.findViewById(R.id.patient_name_text_view);
+        isStopped =itemView.findViewById(R.id.patient_is_stopped);
     }
     public void bind(@NonNull Patient data){
         name.setText(data.getName());

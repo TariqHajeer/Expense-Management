@@ -22,7 +22,7 @@ public interface PatientDao {
     void  Update (Patient patient);
     @Delete
     void  Delete(Patient patient);
-    @Query("Select * from CaringType")
+    @Query("Select * from Patient")
     LiveData<List<Patient>> GetAll();
     @Query("Select Count(*) from Patient where name=:name")
     int Count(@NotNull String name );

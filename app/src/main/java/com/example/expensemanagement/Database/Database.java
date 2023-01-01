@@ -15,18 +15,19 @@ import com.example.expensemanagement.Daos.PatientDao;
 import com.example.expensemanagement.Domain.CaringType;
 import com.example.expensemanagement.Domain.Material;
 import com.example.expensemanagement.Domain.OutlayOwner;
+import com.example.expensemanagement.Domain.Patient;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
-@androidx.room.Database(entities = {CaringType.class}, version = 1, exportSchema = true)
+@androidx.room.Database(entities = {CaringType.class, Patient.class}, version = 1, exportSchema = true)
 public abstract class Database extends RoomDatabase {
 
     public abstract CaringTypeDao CaringTypeDao();
     public abstract PatientDao PatientDao();
-    private static final String dbName = "database1";
+    private static final String dbName = "database3";
     /*
     volatile this word to force thread work in the original instance on the memory
      */
