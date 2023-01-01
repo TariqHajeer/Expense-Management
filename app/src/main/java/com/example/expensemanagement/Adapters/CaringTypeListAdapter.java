@@ -2,8 +2,6 @@ package com.example.expensemanagement.Adapters;
 
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.example.expensemanagement.Domain.Material;
 import com.example.expensemanagement.Helper.Callback;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
