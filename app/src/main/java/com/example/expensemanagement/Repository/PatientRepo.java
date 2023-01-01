@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData;
 
 import com.example.expensemanagement.Daos.PatientDao;
 import com.example.expensemanagement.Database.Database;
-import com.example.expensemanagement.Database.ExpenseManagementDatabase;
 import com.example.expensemanagement.Domain.Patient;
 import com.example.expensemanagement.Helper.Callback;
 
@@ -35,12 +34,12 @@ public class PatientRepo {
         });
     }
     public void Delete(Patient data) {
-        ExpenseManagementDatabase.databaseWriteExecutor.execute(() -> {
+        Database.databaseWriteExecutor.execute(() -> {
             dao.Delete(data);
         });
     }
     public  void  Update(Patient data,Callback<Void> successCallback,Callback<Void> failureCallback){
-        ExpenseManagementDatabase.databaseWriteExecutor.execute(() -> {
+        Database.databaseWriteExecutor.execute(() -> {
             if(dao.Count(data.getId(),data.getName())==0){
                 dao.Update(data);
                 successCallback.invoke(null);
