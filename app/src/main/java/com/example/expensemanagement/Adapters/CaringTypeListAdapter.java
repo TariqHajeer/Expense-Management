@@ -2,6 +2,8 @@ package com.example.expensemanagement.Adapters;
 
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.expensemanagement.Domain.Material;
 import com.example.expensemanagement.Helper.Callback;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
@@ -29,10 +31,13 @@ public class CaringTypeListAdapter extends ListAdapter<CaringType, CaringTypeVie
             @Override
             public void onClick(View view) {
                 if(caringTypeOnClickListener!=null&&position!= RecyclerView.NO_POSITION){
-                    caringTypeOnClickListener.onClick(caringType);
+                    caringTypeOnClickListener.invoke(caringType);
                 }
             }
         });
+    }
+    public CaringType getItemAt(int position) {
+        return getItem(position);
     }
     public static class CaringTypeDiff extends  DiffUtil.ItemCallback<CaringType>{
 

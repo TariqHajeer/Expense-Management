@@ -3,8 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_material">
-
+    app:startDestination="@+id/nav_caringType">
+    <fragment
+        android:id="@+id/nav_caringType"
+        android:name="com.example.expensemanagement.ui.caringType.CaringTypeFragment"
+        android:label="Caring Type"
+        tools:layout="@layout/fragment_caringtype"/>
+    <fragment
+        android:id="@+id/nav_patient"
+        android:name="com.example.expensemanagement.ui.Patient.PatientFragment"
+        android:label="Patient "
+        tools:layout="@layout/fragment_patient"/>
     <fragment
         android:id="@+id/nav_material"
         android:name="com.example.expensemanagement.ui.material.MaterialFragment"
