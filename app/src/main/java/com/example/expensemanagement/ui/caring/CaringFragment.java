@@ -107,8 +107,6 @@ public class CaringFragment extends Fragment {
 
         return  caring;
     }
-    public  void  reset(){
-    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();
