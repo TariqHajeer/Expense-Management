@@ -7,11 +7,13 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.example.expensemanagement.Daos.CaringDao;
 import com.example.expensemanagement.Daos.CaringTypeDao;
 import com.example.expensemanagement.Daos.MaterialDao;
 import com.example.expensemanagement.Daos.OutlayDao;
 import com.example.expensemanagement.Daos.OutlayOwnerDao;
 import com.example.expensemanagement.Daos.PatientDao;
+import com.example.expensemanagement.Domain.Caring;
 import com.example.expensemanagement.Domain.CaringType;
 import com.example.expensemanagement.Domain.Material;
 import com.example.expensemanagement.Domain.OutlayOwner;
@@ -22,12 +24,13 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
-@androidx.room.Database(entities = {CaringType.class, Patient.class}, version = 1, exportSchema = true)
+@androidx.room.Database(entities = {CaringType.class, Patient.class, Caring.class}, version = 1, exportSchema = true)
 public abstract class Database extends RoomDatabase {
 
     public abstract CaringTypeDao CaringTypeDao();
     public abstract PatientDao PatientDao();
-    private static final String dbName = "database3";
+    public  abstract CaringDao caringDao();
+    private static final String dbName = "database4";
     /*
     volatile this word to force thread work in the original instance on the memory
      */
