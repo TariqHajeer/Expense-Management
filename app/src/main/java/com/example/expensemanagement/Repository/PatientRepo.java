@@ -19,6 +19,9 @@ public class PatientRepo {
         dao= db.PatientDao();
 
     }
+    public LiveData<List<Patient>> GetPatientByStatus(boolean isStopped){
+        return dao.GetPatientByStatus(isStopped);
+    }
     public LiveData<List<Patient>> GetAll(){return  dao.GetAll();}
     public  void  Insert(Patient data, Callback<Void> successCallback, Callback<Void> failureCallback){
 

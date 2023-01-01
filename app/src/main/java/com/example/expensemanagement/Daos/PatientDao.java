@@ -24,6 +24,8 @@ public interface PatientDao {
     void  Delete(Patient patient);
     @Query("Select * from Patient")
     LiveData<List<Patient>> GetAll();
+    @Query("Select * from Patient where isStopped=:isStopped")
+    LiveData<List<Patient>> GetPatientByStatus(boolean isStopped);
     @Query("Select Count(*) from Patient where name=:name")
     int Count(@NotNull String name );
     @Query("Select Count(*) from Patient where name=:name and id !=:id")

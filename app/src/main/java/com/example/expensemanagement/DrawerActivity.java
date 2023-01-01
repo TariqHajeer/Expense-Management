@@ -37,6 +37,7 @@ public class DrawerActivity extends AppCompatActivity {
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_caringType,
                 R.id.nav_patient,
+                R.id.nav_caring,
                 R.id.nav_outlay_owner, R.id.nav_material, R.id.nav_outlay, R.id.nav_date_report, R.id.nav_owner_report, R.id.nav_material_report, R.id.nav_service_report)
                 .setOpenableLayout(drawer)
                 .build();
