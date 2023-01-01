@@ -20,6 +20,9 @@ public class PatientViewModel extends AndroidViewModel {
         repo = new PatientRepo(application);
         data = repo.GetAll();
     }
+    public LiveData<List<Patient>> GetPatientByStatus(boolean isStopped){
+        return repo.GetPatientByStatus(isStopped);
+    }
 
     public LiveData<List<Patient>> GetData() {
         return data;

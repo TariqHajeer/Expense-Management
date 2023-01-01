@@ -17,7 +17,7 @@ public class CaringTypeViewHolder  extends RecyclerView.ViewHolder{
     private CaringTypeViewHolder(@NonNull View itemView) {
         super(itemView);
         name =itemView.findViewById(R.id.caringType_name_text_view);
-        description = itemView.findViewById(R.id.patient_is_stopped);
+        description = itemView.findViewById(R.id.caringType_description_text_view);
     }
     public void bind(@NonNull CaringType data){
         name.setText(data.getName());
