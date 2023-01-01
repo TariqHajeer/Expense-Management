@@ -30,7 +30,7 @@
             android:layout_marginTop="10dp"
             android:checked="true"
             android:enabled="false"
-            android:text="Service"
+            android:text="Is Stopped   "
             android:thumb="@drawable/sw_thumb"
             android:track="@drawable/sw_track" />
 

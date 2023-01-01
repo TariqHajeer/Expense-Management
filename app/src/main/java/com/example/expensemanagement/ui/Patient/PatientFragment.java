@@ -47,6 +47,7 @@ public class PatientFragment  extends Fragment {
                 Intent i =new Intent(getActivity(), CreateOrUpdatePatient.class);
                 i.putExtra(CreateOrUpdatePatient.Extra_Id,obj.getId());
                 i.putExtra(CreateOrUpdatePatient.Extra_Name,obj.getName());
+                i.putExtra(CreateOrUpdatePatient.Extra_Is_Stopped,obj.isStopped());
                 startActivity(i);
             }
         };
