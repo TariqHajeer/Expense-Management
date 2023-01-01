@@ -9,17 +9,11 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.expensemanagement.Daos.CaringDao;
 import com.example.expensemanagement.Daos.CaringTypeDao;
-import com.example.expensemanagement.Daos.MaterialDao;
-import com.example.expensemanagement.Daos.OutlayDao;
-import com.example.expensemanagement.Daos.OutlayOwnerDao;
 import com.example.expensemanagement.Daos.PatientDao;
 import com.example.expensemanagement.Domain.Caring;
 import com.example.expensemanagement.Domain.CaringType;
-import com.example.expensemanagement.Domain.Material;
-import com.example.expensemanagement.Domain.OutlayOwner;
 import com.example.expensemanagement.Domain.Patient;
 
-import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 

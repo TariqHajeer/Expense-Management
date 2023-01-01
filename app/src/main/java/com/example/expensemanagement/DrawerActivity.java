@@ -38,7 +38,8 @@ public class DrawerActivity extends AppCompatActivity {
                 R.id.nav_caringType,
                 R.id.nav_patient,
                 R.id.nav_caring,
-                R.id.nav_outlay_owner, R.id.nav_material, R.id.nav_outlay, R.id.nav_date_report, R.id.nav_owner_report, R.id.nav_material_report, R.id.nav_service_report)
+                R.id.nav_stopped_patient,
+                R.id.nav_caring_report)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_drawer);

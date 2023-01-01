@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData;
 
 import com.example.expensemanagement.Daos.CaringTypeDao;
 import com.example.expensemanagement.Database.Database;
-import com.example.expensemanagement.Database.ExpenseManagementDatabase;
 import com.example.expensemanagement.Domain.CaringType;
 import com.example.expensemanagement.Helper.Callback;
 
@@ -32,12 +31,12 @@ public class CaringTypeRepo {
         });
     }
     public void Delete(CaringType caringType) {
-        ExpenseManagementDatabase.databaseWriteExecutor.execute(() -> {
+        Database.databaseWriteExecutor.execute(() -> {
             dao.Delete(caringType);
         });
     }
     public  void  Update(CaringType caringType,Callback<Void> successCallback,Callback<Void> failureCallback){
-        ExpenseManagementDatabase.databaseWriteExecutor.execute(() -> {
+        Database.databaseWriteExecutor.execute(() -> {
             if(dao.Count(caringType.getId(),caringType.getName())==0){
             dao.Update(caringType);
             successCallback.invoke(null);
