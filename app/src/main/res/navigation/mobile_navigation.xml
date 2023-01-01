@@ -19,6 +19,11 @@
         android:name="com.example.expensemanagement.ui.caring.CaringFragment"
         android:label="Caring"
         tools:layout="@layout/fragment_caring"/>
+    <fragment
+        android:id="@+id/nav_stopped_patient"
+        android:name="com.example.expensemanagement.ui.report.PatientStoppedFragment"
+        android:label="Stopped patient"
+        tools:layout="@layout/fragment_patient_stopped"/>
 
 
 </navigation>
